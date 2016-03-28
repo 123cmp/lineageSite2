@@ -1,0 +1,18 @@
+<div class="buy-accounts-wrapper">
+    <div ng-include src="'partials/static/accounts.html'"></div>
+
+    <div class="accounts-table">
+        <ul class="item-list">
+            <li class="header">
+                <div ng-bind="item.server">Сервер</div>
+                <div ng-class="{'item-half': !items[0].server}">Описание</div>
+                <div ng-class="{'item-half': !items[0].server}">Цена</div>
+            </li>
+            <li ng-repeat="item in accounts">
+                <div ng-bind="item.server"></div>
+                <div ng-class="{'item-half': !items[0].server}" ng-bind="item.description"></div>
+                <div ng-class="{'item-half': !items[0].server}" ng-bind="item.cost"></div>
+            </li>
+        </ul>
+    </div>
+</div>

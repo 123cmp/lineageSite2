@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 900px;
+  height: 100vh;
+  background: #e2e2e2;
+  background: -moz-linear-gradient(bottom, rgb(0, 0, 0) 0%, #4a4b4e 100%);
+  background: -webkit-linear-gradient(bottom, rgb(0, 0, 0) 0%, #4a4b4e 100%);
+  background: -o-linear-gradient(bottom, rgb(0, 0, 0) 0%, #4a4b4e 100%);
+  background: -ms-linear-gradient(bottom, rgb(0, 0, 0) 0%, #4a4b4e 100%);
+  background: linear-gradient(bottom, rgb(0, 0, 0) 0%, #4a4b4e 100%);
+}
+
+header {
+
+  img.logo {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+  }
+
+  .title {
+    float: right;
+    margin: 20px 33%;
+    color: white;
+    font-family: arial, sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    text-shadow: 2px 2px 7px black;
+
+  }
+
+}
+
+section.body {
+
+  overflow: hidden;
+
+  aside.left-block {
+    padding: 10px;
+    width: 20%;
+    float: left;
+
+    a {
+      height: 20px;
+      line-height: 20px;
+      display: block;
+      margin: 11px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: arial-black, sans-serif;
+      text-decoration: none;
+      color: #3a3a3a;
+      background: #e2e2e2;
+      background: -moz-linear-gradient(bottom, rgb(19, 253, 228) 0%, #10cebd 100%);
+      background: -webkit-linear-gradient(bottom, rgb(19, 253, 228) 0%, #10cebd 100%);
+      background: -o-linear-gradient(bottom, rgb(19, 253, 228) 0%, #10cebd 100%);
+      background: -ms-linear-gradient(bottom, rgb(19, 253, 228) 0%, #10cebd 100%);
+      background: linear-gradient(bottom, rgb(19, 253, 228) 0%, #10cebd 100%);
+      padding: 10px 0;
+      border: 1px solid rgba(248,255,249, 0.5);
+
+      -webkit-box-shadow: -5px 5px 3px 1px rgba(0,0,0,0.75);
+      -moz-box-shadow: -5px 5px 3px 1px rgba(0,0,0,0.75);
+      box-shadow: -5px 5px 3px 1px rgba(0,0,0,0.75);
+
+      &:hover {
+        transform: scale(1.05, 1.05);
+      }
+
+    }
+
+  }
+
+  .main-container {
+    float: left;
+    width: 45%;
+    position: relative;
+    padding: 20px 0;
+
+  }
+
+  .static-block {
+    background: rgba(74, 75, 78, 0.5);
+    display: block;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .item-list {
+    color: white;
+    list-style: none;
+    width: 100%;
+    li {
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 2px;
+      background: rgba(74, 75, 78, 0.5);
+
+      &.header {
+        background: rgba(112, 113, 116, 0.5);
+      }
+
+      div {
+        float: left;
+        width: 33%;
+
+        &.item-half {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .game-list {
+
+
+    .game {
+      border: 1px solid black;
+      border-radius: 3px;
+      width: 200px;
+      float: left;
+      height: 200px;
+      margin: 5px;
+      overflow: hidden;
+      position: relative;
+
+      .game-name {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-family: 'Arial';
+        font-weight: 700;
+        text-shadow: 2px 2px 2px black;
+
+        -webkit-transition: bottom 0.5s ease-in 0.3s;
+        -moz-transition: bottom 0.5s ease-in 0.3s;
+        -o-transition: bottom 0.5s ease-in 0.3s;
+        transition: bottom 0.5s ease-in 0.3s;
+
+
+      }
+
+      img {
+        position: relative;
+        width: 200px;
+        bottom: 0;
+        -webkit-transition: bottom 0.5s ease-out 0.1s;
+        -moz-transition: bottom 0.5s ease-out 0.1s;
+        -o-transition: bottom 0.5s ease-out 0.1s;
+        transition: bottom 0.5s ease-out 0.1s;
+      }
+
+      ul.game-menu {
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        display: block;
+        top: 200px;
+        -webkit-transition: top 0.5s ease-in 0.3s;
+        -moz-transition: top 0.5s ease-in 0.3s;
+        -o-transition: top 0.5s ease-in 0.3s;
+        transition: top 0.5s ease-in 0.3s;
+
+        &:before {
+          content: '';
+          background: -webkit-linear-gradient(bottom, rgba(132, 128, 133, 0.3), rgba(132, 128, 133, 0.7)); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(bottom, rgba(132, 128, 133, 0.3), rgba(132, 128, 133, 0.7)); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(bottom, rgba(132, 128, 133, 0.3), rgba(132, 128, 133, 0.7)); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(to bottom, rgba(132, 128, 133, 0.3), rgba(132, 128, 133, 0.7)); /* Standard syntax (must be last) */
+          opacity: 0.9;
+          width: 200px;
+          height: 100px;
+          position:absolute;
+          top:200px;
+          left:0;
+
+          -webkit-transition: top 0.5s ease-in 0.3s;
+          -moz-transition: top 0.5s ease-in 0.3s;
+          -o-transition: top 0.5s ease-in 0.3s;
+          transition: top 0.5s ease-in 0.3s;
+        }
+
+        li {
+          padding: 5px 0;
+          z-index: 1;
+          display: block;
+          width: 100%;
+          color: white;
+          text-align: center;
+          position: relative;
+
+          -webkit-transition: top 0.5s ease-in 0.3s;
+          -moz-transition: top 0.5s ease-in 0.3s;
+          -o-transition: top 0.5s ease-in 0.3s;
+          transition: top 0.5s ease-in 0.3s;
+
+          text-shadow: 2px 2px 2px black;
+          text-transform: uppercase;
+          font-size: 14px;
+          height: 20px;
+          line-height: 20px;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba(49, 46, 50, 0.3);
+          }
+        }
+      }
+
+      &:hover {
+
+        ul.game-menu {
+          top: 100px;
+
+          &:before {
+            top: 0;
+            z-index: 0;
+          }
+        }
+
+        .game-name {
+          bottom: 170px;
+        }
+
+        img {
+          bottom: 70px;
+        }
+      }
+    }
+
+
+
+  }
+
+  .right-block {
+    width: 20%;
+    float: left;
+
+    .contacts {
+      border: 1px solid black;
+      height: 200px;
+      margin: 5px;
+    }
+
+    .unknown {
+      border: 1px solid black;
+      height: 200px;
+    }
+  }
+
+}
