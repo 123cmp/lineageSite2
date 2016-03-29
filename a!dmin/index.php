@@ -1,6 +1,7 @@
 <?php
 require_once("modules/db.php");
 require_once("modules/Paginator.php");
+$link = db_connect();
 ?>
 <!DOCTYPE html>
 <html>

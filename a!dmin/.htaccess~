@@ -4,7 +4,7 @@ RewriteBase /
 # Досье пользователя.
 
 RewriteRule main /?page=main
-RewriteRule cs_s /?page=items&game=cs
+RewriteRule cs_go /?page=items&game=cs_go
 #RewriteRule importers /?page=importers
 #RewriteRule contacts /?page=contacts
 #RewriteRule rework /?page=rework
