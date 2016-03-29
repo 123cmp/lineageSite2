@@ -1,0 +1,22 @@
+RewriteEngine on
+RewriteBase /
+
+# Досье пользователя.
+
+RewriteRule main /?page=main
+RewriteRule cs_go /?page=items&game=cs
+#RewriteRule importers /?page=importers
+#RewriteRule contacts /?page=contacts
+#RewriteRule rework /?page=rework
+#RewriteRule reviews /?page=reviews
+
+#RewriteRule game/lineage_free/col /?game=lineage_free&col=true
+#RewriteRule game/lineage_free /?game=lineage_free
+#RewriteRule game/lineage_rus /?game=lineage_rus
+#RewriteRule game/lineage_classic_rus /?game=lineage_classic_rus
+#RewriteRule game/lineage_classic_euro /?game=lineage_classic_euro
+
+#RewriteRule programs /?page=po
+#RewriteRule dota /?page=dota
+#RewriteRule csgo /?page=cs
+
