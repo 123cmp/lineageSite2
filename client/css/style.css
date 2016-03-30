@@ -150,9 +150,9 @@ body {
 }
 header {
   background-color: #673AB7;
-  -webkit-box-shadow: 5px 2px 3px 1px #aeaeae;
-  -moz-box-shadow: 5px 2px 3px 1px #aeaeae;
-  box-shadow: 5px 2px 3px 1px #aeaeae;
+  -webkit-box-shadow: 0px 2px 3px 1px grey;
+  -moz-box-shadow: 0px 2px 3px 1px grey;
+  box-shadow: 0px 2px 3px 1px grey;
   z-index: 5;
   position: fixed;
   top: 0;
@@ -191,6 +191,7 @@ section.body aside.left-block {
   background: white;
   display: table-cell;
   height: 100%;
+  padding-top: 15px;
 }
 section.body aside.left-block a {
   height: 40px;
@@ -206,6 +207,10 @@ section.body aside.left-block a {
 }
 section.body aside.left-block a:hover {
   background-color: #EDE7F6;
+}
+section.body aside.left-block a.active {
+  background-color: #673AB7;
+  color: #EDE7F6;
 }
 section.body .main-container {
   width: 60vw;

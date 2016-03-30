@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
 </head>
-<body ng-app="lt2">
+<body ng-app="lt2" ng-controller="IndexController">
     <header>
         <img src="http://www.ibiza-voice.com/media/news/Labels/materialseries/MaterialLogo.png" class="logo"/>
         <div class="title">
@@ -15,11 +15,11 @@
     </header>
     <section class="body">
         <aside class="left-block">
-            <a ui-sref="main">Главная</a>
-            <a ui-sref="static.guarantee">Гарантии</a>
-            <a ui-sref="static.reviews">Отзывы</a>
-            <a ui-sref="static.faq">FAQ</a>
-            <a ui-sref="static.contacts">Контакты</a>
+            <a ng-class="{'active': currentState == 'main'}" ui-sref="main">Главная</a>
+            <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
+            <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
+            <a ng-class="{'active': currentState == 'static.faq'}" ui-sref="static.faq">FAQ</a>
+            <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
         </aside>
         <section class="main-container">
            <ui-view ></ui-view>
@@ -40,6 +40,7 @@
     <script src="script/services/ServerApi.js"></script>
     <script src="script/directives/max-length.js"></script>
 
+    <script src="script/controllers/IndexController.js"></script>
     <script src="script/controllers/MainPageController.js"></script>
     <script src="script/controllers/ItemsController.js"></script>
     <script src="script/controllers/AccountsController.js"></script>
