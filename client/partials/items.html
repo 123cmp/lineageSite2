@@ -4,12 +4,12 @@
     <div class="items-table">
         <ul class="item-list">
             <li class="header">
-                <div ng-show="items[0].server">Сервер</div>
+                <div ng-class="{'item-half': !items[0].server}" ng-show="items[0].server">Сервер</div>
                 <div ng-class="{'item-half': !items[0].server}">Предмет</div>
                 <div ng-class="{'item-half': !items[0].server}">Цена</div>
             </li>
             <li ng-repeat="item in items">
-                <div ng-show="items[0].server" ng-bind="item.server"></div>
+                <div ng-class="{'item-half': !items[0].server}" ng-show="items[0].server" ng-bind="item.server"></div>
                 <div ng-class="{'item-half': !items[0].server}" ng-bind="item.name"></div>
                 <div ng-class="{'item-half': !items[0].server}" ng-bind="item.cost"></div>
             </li>

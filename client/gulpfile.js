@@ -6,7 +6,13 @@ var connect = require('gulp-connect');
 gulp.task('stream', ['connect'], function () {
     return watchLess('less/style.less')
         .pipe(less())
-        .pipe(gulp.dest('css/'));
+        .on('error', function(error) {
+            console.log(error.toString());
+            this.emit('end');
+
+        })
+        .pipe(gulp.dest('css/'))
+
 });
 
 gulp.task('connect', function() {

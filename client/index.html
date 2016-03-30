@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>LT2</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="lt2">
     <header>
-        <img src="http://www.dailystormer.com/wp-content/uploads/2015/08/2000px-Intel-logo.svg_.png" class="logo"/>
+        <img src="http://www.ibiza-voice.com/media/news/Labels/materialseries/MaterialLogo.png" class="logo"/>
         <div class="title">
-            <h1>LT2</h1>
+            <h1>Luxury Trade v2</h1>
         </div>
     </header>
     <section class="body">
@@ -20,8 +21,8 @@
             <a ui-sref="static.faq">FAQ</a>
             <a ui-sref="static.contacts">Контакты</a>
         </aside>
-        <section>
-           <ui-view class="main-container"></ui-view>
+        <section class="main-container">
+           <ui-view ></ui-view>
         </section>
         <aside class="right-block">
             <div class="contacts"></div>
@@ -37,6 +38,7 @@
     <script src="script/app.js"></script>
 
     <script src="script/services/ServerApi.js"></script>
+    <script src="script/directives/max-length.js"></script>
 
     <script src="script/controllers/MainPageController.js"></script>
     <script src="script/controllers/ItemsController.js"></script>
