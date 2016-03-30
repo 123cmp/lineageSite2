@@ -5,6 +5,8 @@
     <title>LT2</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
+    <link href='bower_components/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="lt2" ng-controller="IndexController">
     <header>
@@ -14,12 +16,17 @@
         </div>
     </header>
     <section class="body">
-        <aside class="left-block">
+        <aside class="left-block" ng-class="{'closed': !mobileOpened}">
             <a ng-class="{'active': currentState == 'main'}" ui-sref="main">Главная</a>
             <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
             <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
             <a ng-class="{'active': currentState == 'static.faq'}" ui-sref="static.faq">FAQ</a>
             <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
+
+            <div ng-class="{'closed': !mobileOpened}" class="mobile-menu" ng-click="toggleMobileMenu()">
+                <i ng-class="{'visible': mobileOpened}" class="fa fa-minus"></i>
+                <i ng-class="{'visible': !mobileOpened}" class="fa fa-plus"></i>
+            </div>
         </aside>
         <section class="main-container">
            <ui-view ></ui-view>
