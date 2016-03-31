@@ -1,5 +1,5 @@
 <?php 
-require_once("services/items.php")
+require_once("services/items.php");
 ?>
 <table id="dataTable" class="table  table-bordered table-hover table-responsive">
         <thead>
@@ -18,10 +18,11 @@ require_once("services/items.php")
         <?php foreach ($items as $i):?>
             <tr>
             <?php foreach ($i as $key => $v):?>
-			<td id="buttonTh"><a class="btn btn-danger" href="../a!dmin/index.php?action=delete&id={$c{'id'}}&game={$GLOBALS['game_name']}\">Delete</a>
+			<td><?=$v?></td>
+            <?php endforeach ?>
+           <td id="buttonTh"><a class="btn btn-danger" href="">Delete</a>
             </td>
-            <?php endforeach ?>
-            <?php endforeach ?>
             </tr>
+             <?php endforeach ?>
         </tbody>
 </table>

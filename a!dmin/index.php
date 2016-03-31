@@ -93,7 +93,7 @@ $link = db_connect();
                             include 'views/orders.php';
                     }
                 }
-                    ?>
+        ?>
 		</div>
 	</div>
 </div>
