@@ -1,6 +1,12 @@
-<?php 
+<?php
 $items = items_all($link, $game);
-
+require_once("services/items.php");
+//$action = $_GET['action'];
+//if($action == 'delete'){
+//	$id =  $_GET['id'];
+//	delete($link, $game, $id);
+//	getPage($game);
+//}
 
 
 
@@ -17,4 +23,14 @@ function items_all($link, $game){
 
     return $items;
 }
+
+function delete($link, $game, $id){
+	$query = "DELETE FROM ".$game."_items WHERE id=".$id;
+
+	$result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
+
+}
+
 ?>

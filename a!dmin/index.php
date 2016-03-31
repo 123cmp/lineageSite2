@@ -2,6 +2,7 @@
 require_once("modules/db.php");
 require_once("modules/Paginator.php");
 $link = db_connect();
+$action = $_GET['action'];
 ?>
 <!DOCTYPE html>
 <html>
