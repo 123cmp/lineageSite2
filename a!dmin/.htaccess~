@@ -1,23 +1,21 @@
 RewriteEngine on
 RewriteBase /
 
-# Досье пользователя.
-
-RewriteRule main /?page=main
-RewriteRule cs_go /?page=items&game=сs_go
+#items dota2, cs_go
+RewriteRule cs_go /?page=items&game=cs_go
 RewriteRule dota2 /?page=items&game=dota2
-#RewriteRule importers /?page=importers
-#RewriteRule contacts /?page=contacts
-#RewriteRule rework /?page=rework
-#RewriteRule reviews /?page=reviews
 
-#RewriteRule game/lineage_free/col /?game=lineage_free&col=true
-#RewriteRule game/lineage_free /?game=lineage_free
-#RewriteRule game/lineage_rus /?game=lineage_rus
-#RewriteRule game/lineage_classic_rus /?game=lineage_classic_rus
-#RewriteRule game/lineage_classic_euro /?game=lineage_classic_euro
+#items lineage
+RewriteRule items_lin/lineage_free /?page=items_lin&game=lineage_free
+RewriteRule items_lin/lineage_classic /?page=items_lin&game=lineage_classic
+RewriteRule items_lin/lineage_ruoff /?page=items_lin&game=lineage_ruoff
 
-#RewriteRule programs /?page=po
-#RewriteRule dota /?page=dota
-#RewriteRule csgo /?page=cs
+#characters lineage
+RewriteRule characters/lineage_free /?page=characters&game=lineage_free
+RewriteRule characters/lineage_classic /?page=characters&game=lineage_classic
+RewriteRule characters/lineage_ruoff /?page=characters&game=lineage_ruoff
+
+
+
+
 

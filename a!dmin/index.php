@@ -1,8 +1,7 @@
 <?php
-require_once("modules/db.php");
+//require_once("modules/db.php");
 require_once("modules/Paginator.php");
-$link = db_connect();
-$action = $_GET['action'];
+//$link = db_connect();
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +28,7 @@ $action = $_GET['action'];
 	<div class="row ">
 		<div class="col-sm-3 col-md-2 sidebar" >
 		<ul class="nav nav-sidebar">
-            <li><a href="#">Orders</a>
+            <li><a href="/orders">Orders</a>
             </li>
           </ul>
           <ul class="nav nav-sidebar">
@@ -38,8 +37,8 @@ $action = $_GET['action'];
             	<ul>
             	<li><a href="#">Адена</a></li>
             	<li><a href="#">Колы</a></li>
-            	<li><a href="#">Вещи</a></li>
-            	<li><a href="#">Персонажи</a></li>
+            	<li><a href="/items_lin/lineage_free">Вещи</a></li>
+            	<li><a href="/characters/lineage_free">Персонажи</a></li>
             </ul>	
             </div>
             </li>
@@ -49,8 +48,8 @@ $action = $_GET['action'];
             <div class="collapse" id="collapseLineageRuoff">
             <ul>
             	<li><a href="#">Адена</a></li>
-            	<li><a href="#">Вещи</a></li>
-            	<li><a href="#">Персонажи</a></li>
+            	<li><a href="/items_lin/lineage_ruoff">Вещи</a></li>
+            	<li><a href="/characters/lineage_ruoff">Персонажи</a></li>
             </ul>
             </div>
             </li>
@@ -60,8 +59,8 @@ $action = $_GET['action'];
             <div class="collapse" id="collapseLineageClassic">
             <ul>
             	<li><a href="/">Адена</a></li>
-            	<li><a href="#">Вещи</a></li>
-            	<li><a href="#">Персонажи</a></li>
+            	<li><a href="/items_lin/lineage_classic">Вещи</a></li>
+            	<li><a href="/characters/lineage_classic">Персонажи</a></li>
             </ul>
             </div>
             </li>
@@ -84,21 +83,24 @@ $action = $_GET['action'];
           </ul>
 		</div>
 		<div class="col-sm-9 col-md-10  main">
-		<?php
-            $game = $_GET['game'];
+		<?php   
+            if (isset($_GET['game'])) {
+              $game = $_GET['game'];
+            }
+            
             $page = $_GET['page'];
             if(isset($game)) {
-                    if(isset($page)) {
-                            include getPage($page);
-                    } else {
-                            include 'views/orders.php';
-                    }
-                }
+                if(isset($page)) {
+                  include getPage($page);
+                } 
+            }else {
+                  include getPage($page);
+            } 
         ?>
 		</div>
 	</div>
 </div>
-    <script type="text/javascript" src="style/jquery-2.2.2.min.js"></script>
-    <script type="text/javascript" src="style/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="/style/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="/style/bootstrap.min.js"></script>    
 </body>
 </html>
