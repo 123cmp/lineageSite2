@@ -7,8 +7,7 @@ function getPage($key) {
         case 'items_lin': $page = 'services/items_lin.php'; break;
         case 'characters': $page = 'services/characters.php'; break;
         case 'adena': $page = 'views/adena.php'; break;
-        default: $page = 'views/404.php'; //потом будет
+        default: $page = 'services/orders.php'; //потом будет
     }
 
     return $page;
-}

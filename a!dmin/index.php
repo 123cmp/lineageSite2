@@ -87,8 +87,12 @@ require_once("modules/Paginator.php");
             if (isset($_GET['game'])) {
               $game = $_GET['game'];
             }
-            
-            $page = $_GET['page'];
+            if (isset($_GET['page'])) {
+               $page = $_GET['page'];
+            } else {
+
+            $page = 'orders';
+            }
             if(isset($game)) {
                 if(isset($page)) {
                   include getPage($page);
