@@ -4,8 +4,6 @@ if(!@include('modules/db.php')){
 }
 $link = db_connect();
 
-$q = json_encode($_GET);
-file_put_contents("log.log", $q, FILE_APPEND);
 if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action == 'delete'){

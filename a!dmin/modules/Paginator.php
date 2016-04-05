@@ -11,3 +11,4 @@ function getPage($key) {
     }
 
     return $page;
+}

@@ -4,8 +4,6 @@ if(!@include('modules/db.php')){
 }
 $link = db_connect();
 
-$q = json_encode($_GET);
-file_put_contents("log.log", $q, FILE_APPEND);
 if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action == 'delete'){
@@ -13,11 +11,16 @@ if(isset($_GET['action'])){
         order_delete($link, $id);
         header("Location: /orders");
     }
-} else {
+} elseif(!isset($_POST['data'])) {
+
     $items = orders_all($link);
     include('views/orders.php');
 }
+if(isset($_POST['data'])){
+    $data = json_decode($_POST['data']);
+    set_status($link, $data[1], $data[0]);
 
+}
 function orders_all($link){
     $query = "SELECT * FROM orders WHERE 1";
     $result = mysqli_query($link, $query);
@@ -39,6 +42,12 @@ function order_delete($link, $id){
     if (!$result)
         die(mysqli_error($link));
 
+}
+function set_status($link, $id, $status){
+    $query = "UPDATE orders SET status = '".$status."' WHERE id = ".$id;
+    $result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
 }
 
 ?>
