@@ -4,15 +4,13 @@ $(".status").change(function(){
         data.push($(this).children(":selected").attr("id"));
 
         data = JSON.stringify(data);
-        //console.log(data);
 
     $.ajax({
         method: 'POST',
         data: {"data" : data},
-        url: '/services/orders.php',
+        url: '../services/orders.php',
         success: function(data){
             data = JSON.stringify(data);
-            console.log(data);
         }
     });
     });

@@ -1,6 +1,6 @@
 <?php
-if(!@include('modules/db.php')){
-	require_once('../modules/db.php');
+if(!@include('/modules/db.php')){
+	require_once('./modules/db.php');
 }
 $link = db_connect();
 
@@ -9,12 +9,11 @@ if(isset($_GET['action'])){
     if($action == 'delete'){
     	$id = $_GET['id'];
         order_delete($link, $id);
-        header("Location: /orders");
+       //header("Location: /orders");
     }
 } elseif(!isset($_POST['data'])) {
-
     $items = orders_all($link);
-    include('views/orders.php');
+    include('./views/orders.php');
 }
 if(isset($_POST['data'])){
     $data = json_decode($_POST['data']);

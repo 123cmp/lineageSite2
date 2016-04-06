@@ -1,7 +1,7 @@
 <?php
 //require_once("modules/db.php");
-require_once("modules/Paginator.php");
-require_once("services/main.php");
+require_once("./modules/Paginator.php");
+require_once("./services/main.php");
 $link = db_connect();
 $games = games_all($link);
 ?>
@@ -62,13 +62,10 @@ $games = games_all($link);
   }
   if(isset($game)) {
     if(isset($page)) {
-                  //include __DIR__."/services/".$page.".php";
-                  //include getPage($page, $game);
-                  //echo __DIR__.getPage($page, $game);
-        include (__DIR__."/services/".$page.".php");
+        include "./services/".$page.".php";
     } 
   }else {
-    include getPage($page);
+    include "./services/orders.php";
   } 
   ?>
 </div>
