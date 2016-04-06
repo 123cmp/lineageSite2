@@ -20,12 +20,13 @@ if(isset($_GET['action'])){
     }
 
 } else {
+    $game = 'dota2';
     $items = items_all($link, $game);
     include('views/items.php');
 }
 
 function items_all($link, $game){
-    $query = "SELECT * FROM ".$game."_items WHERE 1";
+    $query = "SELECT * FROM items WHERE game = '".$game."'";
     $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));

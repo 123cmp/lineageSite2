@@ -1,5 +1,6 @@
 <?php 
-//require_once("services/items.php");
+require_once("services/items.php");
+
 ?>
 <table id="dataTable" class="table  table-bordered table-hover table-responsive">
         <h2>Таблица предметов <?=$game?></h2>

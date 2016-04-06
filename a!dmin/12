@@ -1,0 +1,24 @@
+RewriteEngine on
+RewriteBase /
+
+
+RewriteRule ^orders.*$ /?page=orders
+
+#items dota2, cs_go
+RewriteRule cs_go /?page=items&game=cs_go
+RewriteRule dota2 /?page=items&game=dota2
+
+#items lineage
+RewriteRule items_lin/lineage_free /?page=items_lin&game=lineage_free
+RewriteRule items_lin/lineage_classic /?page=items_lin&game=lineage_classic
+RewriteRule items_lin/lineage_ruoff /?page=items_lin&game=lineage_ruoff
+
+#characters lineage
+RewriteRule characters/lineage_free /?page=characters&game=lineage_free
+RewriteRule characters/lineage_classic /?page=characters&game=lineage_classic
+RewriteRule characters/lineage_ruoff /?page=characters&game=lineage_ruoff
+
+
+
+
+

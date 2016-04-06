@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Апр 04 2016 г., 12:43
+-- Время создания: Апр 06 2016 г., 11:59
 -- Версия сервера: 5.5.47-0ubuntu0.14.04.1
 -- Версия PHP: 5.5.9-1ubuntu4.14
 
@@ -48,43 +48,46 @@ INSERT INTO `characters` (`id`, `game`, `server`, `description`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cs_go_items`
+-- Структура таблицы `games`
 --
 
-CREATE TABLE IF NOT EXISTS `cs_go_items` (
+CREATE TABLE IF NOT EXISTS `games` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `price` float NOT NULL,
+  `game_name` varchar(48) NOT NULL,
+  `alias` varchar(128) NOT NULL,
+  `pages` set('gold','items','characters','cols') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
--- --------------------------------------------------------
-
 --
--- Структура таблицы `dota2_items`
+-- Дамп данных таблицы `games`
 --
 
-CREATE TABLE IF NOT EXISTS `dota2_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+INSERT INTO `games` (`id`, `game_name`, `alias`, `pages`) VALUES
+(1, 'Lineage II free', 'lineage_ii_free', 'gold,items,characters,cols'),
+(2, 'dota2', 'dota2', 'items');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `items_lin`
+-- Структура таблицы `items`
 --
 
-CREATE TABLE IF NOT EXISTS `items_lin` (
+CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `game` enum('lineage_classic','lineage_free','lineage_ruoff') NOT NULL,
-  `server` varchar(128) NOT NULL,
+  `game` varchar(64) NOT NULL,
+  `server` varchar(128) DEFAULT NULL,
   `name` varchar(128) NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `items`
+--
+
+INSERT INTO `items` (`id`, `game`, `server`, `name`, `price`) VALUES
+(1, 'dota2', '', 'hook', 114);
 
 -- --------------------------------------------------------
 
@@ -101,17 +104,17 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `nickname` varchar(128) NOT NULL,
   `contact` varchar(128) NOT NULL,
   `comment` text NOT NULL,
-  `status` enum('new','done') NOT NULL,
+  `status` enum('new','done') NOT NULL DEFAULT 'new',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `orders`
 --
 
 INSERT INTO `orders` (`id`, `game`, `server`, `money`, `adena`, `nickname`, `contact`, `comment`, `status`, `date`) VALUES
-(1, 'lineage_ruoff', 'asdasd', 666, 1111111, 'valear', 'qwe', 'asdasdas ads asdasd asdasdasd', 'new', '2016-04-01 12:54:59');
+(2, 'lineage_ruoff', 'йцуйц 112', 1111, 111111, 'фывфвфы', 'мммммм', 'ц', 'done', '2016-04-05 12:05:30');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
