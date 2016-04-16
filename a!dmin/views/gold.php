@@ -1,6 +1,6 @@
 
 <table id="dataTable" class="table  table-bordered table-hover table-responsive">
-    <h2>Таблица предметов <?php echo $game?></h2>
+    <h2>Таблица серверов <?php echo $game?></h2>
     <thead>
         <tr>
             <?php foreach ($items as $i):
@@ -30,8 +30,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 class="modal-title" id="myModalLabel">Добавить предмет</h3>
-                <span>Указать сервер <input type="checkbox" id='server_toggle'></span>
+                <h3 class="modal-title" id="myModalLabel">Добавить сервер с валютой</h3>
             </div>
             <form method="post" action="/services/items.php/?action=add&game=<?php echo $game?>">
                 <div class="modal-body">

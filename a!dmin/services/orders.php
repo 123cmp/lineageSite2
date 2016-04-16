@@ -1,5 +1,5 @@
 <?php
-if(!@include('/modules/db.php')){
+if(!@include('../modules/db.php')){
 	require_once('./modules/db.php');
 }
 $link = db_connect();
@@ -8,8 +8,8 @@ if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action == 'delete'){
     	$id = $_GET['id'];
-        order_delete($link, $id);
-       //header("Location: /orders");
+       order_delete($link, $id);
+       header("Location: /?page=orders");
     }
 } elseif(!isset($_POST['data'])) {
     $items = orders_all($link);

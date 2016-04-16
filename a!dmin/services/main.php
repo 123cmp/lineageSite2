@@ -37,23 +37,4 @@ function get_pages($link, $game){
 
 }
 
-
-
-
-function char_delete($link, $id){
-	$query = "DELETE FROM characters WHERE id=".$id;
-
-	$result = mysqli_query($link, $query);
-    if (!$result)
-        die(mysqli_error($link));
-
-}
-
-function char_add($link, $game, $server, $description, $price){
-
-	$query = "INSERT INTO characters (game, server, description, price) VALUES ('".$game."', '".$server."', '".$description."', '".$price."')";
-	$result = mysqli_query($link, $query);
-    if (!$result)
-        die(mysqli_error($link));
-}
 ?>

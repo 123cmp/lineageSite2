@@ -13,4 +13,16 @@ $(".status").change(function(){
             data = JSON.stringify(data);
         }
     });
-    });
+});
+
+$('#server_group').hide();
+
+$('#server_toggle').change(function(){
+    if($(this).prop("checked")){
+       $('#server_group').show(); 
+    } else {
+       $('#server_input').val('');
+       $('#server_group').hide(); 
+    }
+
+});

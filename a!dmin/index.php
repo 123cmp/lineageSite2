@@ -28,7 +28,7 @@ $games = games_all($link);
   </div>
   <div class="container-fluid" style="margin-top: 60px">
    <div class="row ">
-    <div class="col-sm-3 col-md-2 sidebar" >
+    <div class="col-sm-3 col-md-2 sidebar" style="margin-bottom: 20px">
       <ul class="nav nav-sidebar">
         <li><a href="?page=orders">Orders</a>
         </li>

@@ -1,34 +1,34 @@
 <?php
 if(!@include('../modules/db.php')){
-	require_once('./modules/db.php');
+    require_once('./modules/db.php');
 }
 $link = db_connect();
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action == 'delete'){
-    	$id = $_GET['id'];
-    	$game = $_GET['game'];
+        $id = $_GET['id'];
+        $game = $_GET['game'];
         item_delete($link, $id);
-        header("Location: /?page=items&game=".$game);
+        header("Location: /?page=gold&game=".$game);
     } elseif ($action == 'add') {
-    	$name = $_POST['name'];
-    	$price = $_POST['price'];
-    	$game = $_GET['game'];
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $game = $_GET['game'];
         if(isset($_POST['server'])){
             $server = $_POST['server'];
         } else {
             $server = null;
         }
 
-    	item_add($link, $game, $name, $price, $server);
-    	header("Location: /?page=items&game=".$game);
+        item_add($link, $game, $name, $price, $server);
+        header("Location: /?page=gold&game=".$game);
     }
 
 } else {
     
     $items = items_all($link, $game);
-    include('./views/items.php');
+    include('./views/gold.php');
 }
 
 function items_all($link, $game){
@@ -48,9 +48,9 @@ function items_all($link, $game){
 }
 
 function item_delete($link, $id){
-	$query = "DELETE FROM items WHERE id=".$id;
+    $query = "DELETE FROM items WHERE id=".$id;
 
-	$result = mysqli_query($link, $query);
+    $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
 
@@ -58,8 +58,8 @@ function item_delete($link, $id){
 
 function item_add($link, $game, $name, $price, $server){
 
-	$query = "INSERT INTO items (name, price, game, server) VALUES ('".$name."', '".$price."', '".$game."', '".$server."')";
-	$result = mysqli_query($link, $query);
+    $query = "INSERT INTO items (name, price, game, server) VALUES ('".$name."', '".$price."', '".$game."', '".$server."')";
+    $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
 }

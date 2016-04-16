@@ -1,9 +1,8 @@
 <?php
-if(!@include('modules/db.php')){
-	require_once('../modules/db.php');
+if(!@include('../modules/db.php')){
+	require_once('./modules/db.php');
 }
 $link = db_connect();
-
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];
@@ -11,19 +10,19 @@ if(isset($_GET['action'])){
     	$id = $_GET['id'];
     	$game = $_GET['game'];
         char_delete($link, $id);
-        header("Location: /characters/".$game);
+        header("Location: /?page=characters&game=".$game);
     } elseif ($action == 'add') {
     	$description = $_POST['description'];
     	$price = $_POST['price'];
         $server = $_POST['server'];
     	$game = $_GET['game'];
     	char_add($link, $game, $server, $description, $price);
-    	header("Location: /characters/".$game);
+    	header("Location: /?page=characters&game=".$game);
     }
 
 } else {
     $items = chars_all($link, $game);
-    include('views/characters.php');
+    include('./views/characters.php');
 }
 
 function chars_all($link, $game){
