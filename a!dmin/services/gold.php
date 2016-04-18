@@ -12,16 +12,14 @@ if(isset($_GET['action'])){
         item_delete($link, $id);
         header("Location: /?page=gold&game=".$game);
     } elseif ($action == 'add') {
-        $name = $_POST['name'];
+        $currency = $_POST['currency'];
         $price = $_POST['price'];
         $game = $_GET['game'];
-        if(isset($_POST['server'])){
-            $server = $_POST['server'];
-        } else {
-            $server = null;
-        }
+        $count = $_POST['count'];
+        $server = $_POST['server'];
+        
 
-        item_add($link, $game, $name, $price, $server);
+        item_add($link, $server, $count, $price, $game, $currency);
         header("Location: /?page=gold&game=".$game);
     }
 
@@ -32,23 +30,24 @@ if(isset($_GET['action'])){
 }
 
 function items_all($link, $game){
-    $query = "SELECT * FROM items WHERE game = '".$game."'";
+    $query = "SELECT * FROM rates WHERE game = '".$game."'";
     $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
     $items = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['server'] == null) {
-            unset($row['server']);
-        }
+
         $items[] = $row;
+    }
+    for($i = 0; $i<count($items); $i++){
+        $items[$i]['price'] = $items[$i]['price'] * $items[$i]['count'];
     }
     
     return $items;
 }
 
 function item_delete($link, $id){
-    $query = "DELETE FROM items WHERE id=".$id;
+    $query = "DELETE FROM rates WHERE id=".$id;
 
     $result = mysqli_query($link, $query);
     if (!$result)
@@ -56,12 +55,27 @@ function item_delete($link, $id){
 
 }
 
-function item_add($link, $game, $name, $price, $server){
+function item_add($link, $server, $count, $price, $game, $currency){
 
-    $query = "INSERT INTO items (name, price, game, server) VALUES ('".$name."', '".$price."', '".$game."', '".$server."')";
+    $price = $price / $count;
+    $query = "INSERT INTO rates (server, count, price, game, currency) VALUES ('".$server."', '".$count."', '".$price."', '".$game."', '".$currency."')";
     $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
 }
 
+function get_sales($link $server_id){
+
+    $query = 'SELECT count, value FROM sales WHERE rate_id = '.$server_id;
+    $result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
+    $items = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        $items[] = $row;
+    }
+    return $items;
+
+}
 ?>
