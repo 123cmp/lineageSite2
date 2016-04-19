@@ -21,6 +21,20 @@ if(isset($_GET['action'])){
 
         item_add($link, $server, $count, $price, $game, $currency);
         header("Location: /?page=gold&game=".$game);
+    } elseif($action == 'get_sales'){
+    	$server_id = $_POST['r_id'];
+    	$items = get_sales($link, $server_id);
+    	echo json_encode($items);
+    } elseif($action == 'delete_sale'){
+    	$s_id = $_POST['s_id'];
+    	delete_sale($link, $s_id);
+    	
+    } elseif($action == 'add_sale'){
+    	$r_id = $_POST['r_id'];
+    	$count = $_POST['count'];
+    	$value = $_POST['value'];
+    	$res = add_sale($link, $r_id, $count, $value);
+    	echo json_encode($res);
     }
 
 } else {
@@ -64,9 +78,9 @@ function item_add($link, $server, $count, $price, $game, $currency){
         die(mysqli_error($link));
 }
 
-function get_sales($link $server_id){
+function get_sales($link, $server_id){
 
-    $query = 'SELECT count, value FROM sales WHERE rate_id = '.$server_id;
+    $query = 'SELECT * FROM sales WHERE rate_id = '.$server_id;
     $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
@@ -77,5 +91,25 @@ function get_sales($link $server_id){
     }
     return $items;
 
+}
+
+function delete_sale($link, $s_id){
+
+	$query = "DELETE FROM sales WHERE id=".$s_id;
+	$result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
+
+}
+
+function add_sale($link, $rate_id, $count, $value){
+
+	$query = "INSERT INTO sales (rate_id, count, value) VALUES ('".$rate_id."', '".$count."', '".$value."')";
+	$result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
+
+    $id = mysqli_insert_id($link);
+    return $id;
 }
 ?>

@@ -20,7 +20,7 @@
              <td><?=$v?></td>
          <?php endforeach ?>
          <td id="buttonTh" style="width: 16%;"><a class="btn btn-danger" href="/services/gold.php/?action=delete&game=<?php echo $game?>&id=<?php echo $i['id']?>" >Delete</a>
-         <a href="#salesModal" role="button" class="btn btn-success" data-toggle="modal">Sales</a>
+         <a href="#salesModal" sid="<?php echo $i['id']?>" role="button" class="btn btn-success sales" data-toggle="modal">Sales</a>
          </td>
      </tr>
  <?php endforeach ?>
@@ -34,13 +34,26 @@
                 <h3 class="modal-title" id="myModalLabel">Добавить сервер</h3>
             </div>
                 <div class="modal-body">
-                    
+                <table class="table table-hower table-sales text-center">
+                    <thead >
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Warning!</strong>Заполните необходимые поля
+                        </div>
+                        <th class="text-center">Начальная сумма</th>
+                        <th class="text-center">Сидка в %</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>   
                 </div>
                 <div class="modal-footer">
                     <div class="form-inline">
-                        <input id="priceItem" type="number" step="0.01" class="form-control form-item" placeholder="Количество">
-                        <input id="priceItem" type="number" step="0.01" class="form-control form-item" placeholder="Скидка %">
-                        <button class="btn">Добавить скидку</button>
+                        <input id="sale-count" type="number" step="1" class="form-control form-item" placeholder="Количество">
+                        <input id="sale-val" type="number" step="0.01" class="form-control form-item" placeholder="Скидка %">
+                        <button class="btn add-sale">Добавить скидку</button>
                     </div>    
                 </div>
           </div>
@@ -53,7 +66,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 class="modal-title" id="myModalLabel">Скидки для сервера.</h3>
+                <h3 class="modal-title" id="myModalLabel">Добавить сервер.</h3>
             </div>
             <form method="post" action="/services/gold.php/?action=add&game=<?php echo $game?>">
                 <div class="modal-body">
