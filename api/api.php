@@ -5,7 +5,9 @@ error_reporting(E_ALL);
 
 $game_data = array();
 $game_rate = array();
-$order_virtual_table = array();
+if (!isset($order_virtual_table)) {
+    $order_virtual_table = array();
+}
 
 $host='localhost';
 $database='for_test';
@@ -90,7 +92,7 @@ if(isset($_GET['game']) && isset($_GET['currency'])) {
             $server_name = $row['server'];
         }
 
-        $s_query = "SELECT * FROM `sales` WHERE rate_id = $server_id";
+        $s_query = "SELECT * FROM sales WHERE rate_id = '".$server_id."'";
         $s_res = mysqli_query($dbh, $s_query);
         while ($s_row = mysqli_fetch_array($s_res)) {
 
@@ -169,52 +171,95 @@ if(isset($_POST['orders'])) {
         $order_date = time();
 
         //calc
+        $order_calc_money = 0;
 
+        $query = "SELECT * FROM rates WHERE game = '".$order_game_name."' AND server = '".$order_game_server."'  AND currency = '".$order_currency."'";
+        $res = mysqli_query($dbh, $query);
+        while($row = mysqli_fetch_array($res)) {
 
+            $order_rate_id = $row['id'];
+            $order_count_price = $row['price'];
+            $order_sale = 0;
+            $current_sale = 0;
 
+            $s_query = "SELECT * FROM sales WHERE rate_id = '".$order_rate_id."'";
+            $s_res = mysqli_query($dbh, $s_query);
+            // find sale for current count
+            while ($s_row = mysqli_fetch_array($s_res)) {
+                if ($order_count > $s_row['count']) {
+                    $current_sale = $s_row['value'];
+                } else {
+                    $order_sale = $s_row['value'];
+                    break;
+                }
+            }
 
+            if ($order_sale == 0) {
+                $order_sale = $current_sale;
+            }
+            $order_calc_money = ($order_count * $order_count_price * (100 - $order_sale)) / 100;
+        }
 
-
+        $order_current_order = array(
+            "game" => $order_game_name,
+            "server" => $order_game_server,
+            "money" => $order_calc_money,
+            "currency" => $order_currency,
+            "number" => $order_count,
+            "nickname" => $order_game_nick,
+            "contact" => $order_contact,
+            "comment" => $order_comment,
+            "time" => $order_date
+        );
         //dudos-defender
-        //watch all rows
-//        for ($x = 0; $x < count($order_virtual_table); $x++) {
-//            if ($order_date - $order_virtual_table->time > 30 ) {
-//                //delete row
-//            }
-//            echo $x;
-//        }
-//
-//        $order_vt_count =
-//        foreach ($order_virtual_table as $value) {
-//            if ($order_date - $value->time > 30 ) {
-//
-//            }
-//        }
-//
-//        $order_virtual_table[] = array(
-//            "game" => $order_game_name,
-//            "server" => $order_game_server,
-//            "money" => "999",
-//            "currency" => $order_currency,
-//            "number" => $order_count,
-//            "nickname" => $order_game_nick,
-//            "contact" => $order_contact,
-//            "comment" => $order_comment,
-//            "time" => $order_date
-//        );
+        //delete old orders
+        //TODO order_virtual_table always empty(
+        if (count($order_virtual_table) > 0) {
+            foreach ($order_virtual_table as $i => $row) {
+                if($order_date - $row->time > 30 ) {
+                    unset($order_virtual_table[$i]);
+                    echo "old row delete";
+                }
+            }
+            foreach ($order_virtual_table as $row) {
+
+                if ($order_current_order != $row) {
+                    echo "pushing order";
+                    //push to vt
+                    $order_virtual_table[] = $order_current_order;
+
+                    //push to DB
+                    $query = "INSERT INTO orders (game, server, money, currency, number, nickname, contact, comment)".
+                        " VALUES ('".$order_game_name."', '".$order_game_server."', '".$order_calc_money."', '".$order_currency."', ".
+                        " '".$order_count."', '".$order_game_nick."', '".$order_contact."', '".$order_comment."')";
+
+                    $result = mysqli_query($dbh, $query);
+                    if (!$result)
+                        die(mysqli_error($dbh));
+
+                } else {
+                    //do nothing
+                    echo "find copy";
+                }
+            }
+
+        } else {
+            //push to vt
+            $order_virtual_table[] = $order_current_order;
+
+            //push to DB
+            $query = "INSERT INTO orders (game, server, money, currency, number, nickname, contact, comment)".
+                " VALUES ('".$order_game_name."', '".$order_game_server."', '".$order_calc_money."', '".$order_currency."', ".
+                " '".$order_count."', '".$order_game_nick."', '".$order_contact."', '".$order_comment."')";
+
+            $result = mysqli_query($dbh, $query);
+            if (!$result)
+                die(mysqli_error($dbh));
+        }
+
+        //if current order not exist - push order to this table and DB.orders
 
 
-
-
-
-
-        $query = "INSERT INTO orders (game, server, money, currency, number, nickname, contact, comment)".
-            " VALUES ('".$order_game_name."', '".$order_game_server."', '99', '".$order_currency."', '".$order_count."', '".$order_game_nick."',".
-            " '".$order_contact."', '".$order_comment."')";
-
-        $result = mysqli_query($dbh, $query);
-        if (!$result)
-            die(mysqli_error($dbh));
     }
 }
 ?>
