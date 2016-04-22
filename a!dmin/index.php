@@ -71,6 +71,7 @@ $games = games_all($link);
 </div>
 </div>
 </div>
+
 <script type="text/javascript" src="/style/jquery-2.2.2.min.js"></script>
 <script type="text/javascript" src="/style/bootstrap.min.js"></script>
 <script type="text/javascript" src="/scripts/main.js"></script>     
