@@ -55,6 +55,7 @@ function items_all($link, $game){
     }
     for($i = 0; $i<count($items); $i++){
         $items[$i]['price'] = $items[$i]['price'] * $items[$i]['count'];
+        $items[$i]['count'] = number_format($items[$i]['count'],0,'',' ');
     }
     
     return $items;
