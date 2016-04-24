@@ -40,6 +40,7 @@ if(isset($_GET['action'])){
 } else {
     
     $items = items_all($link, $game);
+    $currency = get_currency($link, $game); 
     include('./views/gold.php');
 }
 
@@ -73,7 +74,7 @@ function item_delete($link, $id){
 function item_add($link, $server, $count, $price, $game, $currency){
 
     $price = $price / $count;
-    $query = "INSERT INTO rates (server, count, price, game, currency) VALUES ('".$server."', '".$count."', '".$price."', '".$game."', '".$currency."')";
+    $query = "INSERT INTO rates (server, count, price, game, currency_name) VALUES ('".$server."', '".$count."', '".$price."', '".$game."', '".$currency."')";
     $result = mysqli_query($link, $query);
     if (!$result)
         die(mysqli_error($link));
@@ -112,5 +113,19 @@ function add_sale($link, $rate_id, $count, $value){
 
     $id = mysqli_insert_id($link);
     return $id;
+}
+
+function get_currency($link, $game){
+    
+    $query = "SELECT currency_name FROM currency WHERE game_name = '".$game."'";
+    $result = mysqli_query($link, $query);
+    if (!$result)
+        die(mysqli_error($link));
+    $items = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        $items[] = $row;
+    }
+    return $items;
 }
 ?>

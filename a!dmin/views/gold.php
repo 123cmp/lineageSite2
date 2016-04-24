@@ -84,8 +84,12 @@
                         <input id="priceItem" type="number" step="0.01" class="form-control form-item" name="price" required>
                     </div>
                     <div class="form-group">
-                        <label for="priceItem">Название валюты (gold, col, adena или любое другое) :</label>
-                        <input id="priceItem" type="text" class="form-control form-item" name="currency" required>
+                        <label for="cur">Название валюты :</label>
+                        <select id="cur"  class="form-control form-item" name="currency">
+                            <?php foreach($currency as $cur):?>
+                            <option><?=$cur['currency_name']?></option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

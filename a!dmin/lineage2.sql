@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Апр 22 2016 г., 18:36
--- Версия сервера: 5.5.46-0ubuntu0.14.04.2
--- Версия PHP: 5.6.20-1+deb.sury.org~trusty+1
+-- Хост: 127.0.0.1
+-- Время создания: Апр 24 2016 г., 22:03
+-- Версия сервера: 5.5.25
+-- Версия PHP: 5.3.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -69,6 +69,31 @@ INSERT INTO `characters` (`id`, `game`, `server`, `description`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `currency`
+--
+
+CREATE TABLE IF NOT EXISTS `currency` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_name` varchar(128) NOT NULL,
+  `currency_name` varchar(48) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Дамп данных таблицы `currency`
+--
+
+INSERT INTO `currency` (`id`, `game_name`, `currency_name`) VALUES
+(1, 'lineage_ii_free', 'adena'),
+(2, 'lineage_ii_free', 'col'),
+(3, 'lineage_ii_classic', 'adena'),
+(4, 'lineage_ii_ruoff', 'adena'),
+(5, 'tera', 'gold'),
+(6, 'archeage', 'gold');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `games`
 --
 
@@ -106,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `name` varchar(128) NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `items`
@@ -114,7 +139,8 @@ CREATE TABLE IF NOT EXISTS `items` (
 
 INSERT INTO `items` (`id`, `game`, `server`, `name`, `price`) VALUES
 (2, 'dota2', NULL, 'qwe', 123),
-(8, 'lineage_ii_ruoff', 'satan x666', 'кольцо баюма', 1212.5);
+(8, 'lineage_ii_ruoff', 'satan x666', 'кольцо баюма', 1212.5),
+(9, 'lineage_ii_free', 'qwe', '123123', 222);
 
 -- --------------------------------------------------------
 
@@ -147,21 +173,22 @@ CREATE TABLE IF NOT EXISTS `rates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `game` varchar(128) NOT NULL,
   `server` varchar(128) NOT NULL,
-  `count` int(11) NOT NULL,
+  `count` bigint(11) NOT NULL,
   `price` float NOT NULL,
-  `currency` varchar(24) NOT NULL,
+  `currency_name` varchar(48) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `rates`
 --
 
-INSERT INTO `rates` (`id`, `game`, `server`, `count`, `price`, `currency`) VALUES
-(1, 'lineage_ii_free', 'asddas a', 11111111, 22, 'adena'),
-(2, 'lineage_ii_free', 'averia.ws x500', 1000000000, 0.000000015, 'adena'),
-(3, 'lineage_ii_classic', 'averia.ws x500', 1000, 0.05, 'adena'),
-(4, 'archeage', 'tera 200', 1000000, 0.00005, 'gold');
+INSERT INTO `rates` (`id`, `game`, `server`, `count`, `price`, `currency_name`) VALUES
+(11, 'lineage_ii_free', 'класик х 800', 2147483647, 0.000000000000974649, 'adena'),
+(12, 'lineage_ii_free', 'ruoff xx500', 2147483647, 0.00000000097457, 'adena'),
+(13, 'lineage_ii_free', 'satan x666', 1000, 0.015, 'col'),
+(14, 'lineage_ii_free', 'daemon x666', 2147483647, 0.0000000014, 'adena'),
+(15, 'lineage_ii_free', 'averia.ws x500', 100000000000, 0.0000000002, 'adena');
 
 -- --------------------------------------------------------
 
@@ -175,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `count` bigint(20) NOT NULL,
   `value` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `sales`
