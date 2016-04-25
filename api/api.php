@@ -34,8 +34,10 @@ if(isset($_GET['games'])) {
                     case "gold":
                         //HARDCODE
                         $currency = $row["currency_name"];
+
                         if ($currency == "adena") {$menu_name = "Купить адену";}
-                        if ($currency == "col") {$menu_name = "Купить кол";}
+                        else if ($currency == "col") {$menu_name = "Купить кол";}
+                        else {$menu_name = "Купить валюту";}
 
                         break;
                     case "items":
