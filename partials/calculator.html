@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="group">
-                    <input type="number" ng-model="model.realM" required>
+                    <input type="number" ng-change="onChangeRealMoney()" ng-model="model.realM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Я плачу</label>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="group">
-                    <input type="number" ng-model="model.gameM" required>
+                    <input type="number" ng-change="onChangeGameMoney()" ng-model="model.gameM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Я покупаю</label>

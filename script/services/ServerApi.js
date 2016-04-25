@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('lt2').factory('ServerApi', ['$q', '$timeout', function ($q, $timeout) {
+angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
     var games = null;
 
     var fakeItems = [
@@ -38,39 +38,39 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', function ($q, $tim
 
     var fakeGames = [{
         img: 'http://goldbliss.ru/wp-content/themes/MyThemeSite/images/Catalog/catalog-3.png',
-        name: 'dota2',
+        name: 'lineage_ii_free',
         menu: [
             {
                 name: 'Купить валюту',
                 type: 'calculator',
                 params: {
                     currency: 'adena',
-                    game: 'dota2'
+                    game: 'lineage_ii_free'
                 }
             }
         ]
     }, {
         img: 'http://goldbliss.ru/wp-content/themes/MyThemeSite/images/Catalog/catalog-3.png',
-        name: 'AION',
+        name: 'lineage_ii_free',
         menu: [
             {
                 name: 'Купить Предметы',
                 type: 'items',
                 params: {
-                    game: 'aion'
+                    game: 'lineage_ii_free'
                 }
             },
             {
                 name: 'Купить Аккаунт',
                 type: 'accounts',
                 params: {
-                    game: 'aion'
+                    game: 'lineage_ii_free'
                 }
             }
         ]
     }, {
         img: 'http://goldbliss.ru/wp-content/themes/MyThemeSite/images/Catalog/catalog-3.png',
-        name: 'CS:GO',
+        name: 'lineage_ii_free',
         menu: [
             {
                 name: 'Прокачка',
@@ -97,9 +97,9 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', function ($q, $tim
     function getItems(game) {
         var dfd = new $q.defer();
 
-        $timeout(function () {
-            dfd.resolve(fakeItems);
-        }, 1000);
+        $http.get('/api/api.php?items=' + game).then(function (result) {
+            dfd.resolve(result.data);
+        });
 
         return dfd.promise;
     }
@@ -107,17 +107,28 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', function ($q, $tim
     function getAccounts(game) {
         var dfd = new $q.defer();
 
-        $timeout(function () {
-            dfd.resolve(fakeAccounts);
-        }, 1000);
+        $http.get('/api/api.php?accounts=' + game).then(function (result) {
+            dfd.resolve(result.data);
+        });
+
+        return dfd.promise;
+    }
+
+    function getGameServers(game, currency) {
+        var dfd = new $q.defer();
+        $http.get('/api/api.php?game=' + game + '&currency=' + currency).then(function (result) {
+            dfd.resolve(result.data);
+        });
 
         return dfd.promise;
     }
 
 
+
     return {
         getGames: getGames,
         getItems: getItems,
-        getAccounts: getAccounts
+        getAccounts: getAccounts,
+        getGameServers: getGameServers
     }
 }]);

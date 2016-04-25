@@ -1,18 +1,19 @@
 <?php
 
+require_once('../a!dmin/modules/db.php');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 $game_data = array();
 $game_rate = array();
 
-$host='localhost';
+$host='localhost:8889';
 $database='lineage2';
 $user='root';
-$pswd='';
+$pswd='root';
 
-$dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
-
+//$dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
+$dbh = db_connect();
 // ---------- GAMES ----------
 
 if(isset($_GET['games'])) {
@@ -79,7 +80,7 @@ if(isset($_GET['game']) && isset($_GET['currency'])) {
     $game_name = $_GET['game'];
     $server_currency = $_GET['currency'];
 
-    $query = "SELECT * FROM rates WHERE game = '".$game_name."'  AND currency = '".$server_currency."'";
+    $query = "SELECT * FROM rates WHERE game = '".$game_name."'  AND currency_name = '".$server_currency."'";
     $res = mysqli_query($dbh, $query);
     while($row = mysqli_fetch_array($res)) {
 

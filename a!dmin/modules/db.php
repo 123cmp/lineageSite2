@@ -1,7 +1,7 @@
 <?php
-define('MYSQL_SERVER', '127.0.0.1');
+define('MYSQL_SERVER', '127.0.0.1:8889');
 define('MYSQL_USER', 'root');
-define('MYSQL_PASSWORD', '');
+define('MYSQL_PASSWORD', 'root');
 define('MYSQL_DB', 'lineage2');
 
 //как на хостинге
