@@ -34,7 +34,7 @@
             <td><?=$v?></td>
         <?php endif ?>
     <?php endforeach ?>
-    <td id="buttonTh"><a class="btn btn-danger" href="/services/orders.php?action=delete&id=<?php echo $i['id']?>" >Delete</a>
+    <td id="buttonTh"><a class="btn btn-danger" href="./services/orders.php?action=delete&id=<?php echo $i['id']?>" >Delete</a>
     </td>
 </tr>
 <?php endforeach ?>

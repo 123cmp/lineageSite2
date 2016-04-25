@@ -10,14 +10,14 @@ if(isset($_GET['action'])){
     	$id = $_GET['id'];
     	$game = $_GET['game'];
         char_delete($link, $id);
-        header("Location: /?page=characters&game=".$game);
+        header("Location: /a!dmin/?page=characters&game=".$game);
     } elseif ($action == 'add') {
     	$description = $_POST['description'];
     	$price = $_POST['price'];
         $server = $_POST['server'];
     	$game = $_GET['game'];
     	char_add($link, $game, $server, $description, $price);
-    	header("Location: /?page=characters&game=".$game);
+    	header("Location: /a!dmin/?page=characters&game=".$game);
     }
 
 } else {

@@ -34,7 +34,7 @@ $('.sales').click(function(){
     $.ajax({
         method: 'POST',
         data: {'r_id' : r_id},
-        url: '../services/gold.php/?action=get_sales',
+        url: './services/gold.php/?action=get_sales',
         success: function(data){
             data = JSON.parse(data);
             $.each(data, function(i,v){
@@ -61,7 +61,7 @@ $('.add-sale').click(function(){
                 'value': value,
                 'r_id': r_id,
             },
-            url: '../services/gold.php/?action=add_sale',
+            url: './services/gold.php/?action=add_sale',
             success: function(id){
                 var row = '<tr sale-id="'+id+'"><td>'+count.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')+'</td><td>'+value+'%</td><td><a class="btn btn-danger sale-del" sid="'+id+'">del</a></td></tr>';
                 $('.table-sales > tbody').append(row);
@@ -82,7 +82,7 @@ function bindDelete(){
         $.ajax({
             method: 'POST',
             data: {'s_id' : s_id},
-            url: '../services/gold.php/?action=delete_sale', 
+            url: './services/gold.php/?action=delete_sale', 
             success : function(){
                 $('[sale-id='+s_id+']').remove();
             }

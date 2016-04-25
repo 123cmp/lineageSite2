@@ -19,7 +19,7 @@
             <?php foreach ($i as $key => $v):?>
              <td><?=$v?></td>
          <?php endforeach ?>
-         <td id="buttonTh"><a class="btn btn-danger" href="/services/characters.php/?action=delete&game=<?php echo $game?>&id=<?php echo $i['id']?>" >Delete</a>
+         <td id="buttonTh"><a class="btn btn-danger" href="./services/characters.php/?action=delete&game=<?php echo $game?>&id=<?php echo $i['id']?>" >Delete</a>
          </td>
      </tr>
  <?php endforeach ?>
@@ -32,7 +32,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" id="myModalLabel">Добавить Персонажа</h3>
             </div>
-            <form method="post" action="/services/characters.php/?action=add&game=<?php echo $game?>">
+            <form method="post" action="./services/characters.php/?action=add&game=<?php echo $game?>">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="inputName">Сервер</label>

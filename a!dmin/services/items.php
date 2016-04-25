@@ -10,7 +10,7 @@ if(isset($_GET['action'])){
     	$id = $_GET['id'];
     	$game = $_GET['game'];
         item_delete($link, $id);
-        header("Location: /?page=items&game=".$game);
+        header("Location: /a!dmin/?page=items&game=".$game);
     } elseif ($action == 'add') {
     	$name = $_POST['name'];
     	$price = $_POST['price'];
@@ -22,7 +22,7 @@ if(isset($_GET['action'])){
         }
 
     	item_add($link, $game, $name, $price, $server);
-    	header("Location: /?page=items&game=".$game);
+    	header("Location: /a!dmin/?page=items&game=".$game);
     }
 
 } else {

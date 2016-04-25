@@ -10,7 +10,7 @@ $games = games_all($link);
 <head>
 	<title>Admin panel</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/style/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/a!dmin/style/bootstrap.min.css">
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -30,7 +30,7 @@ $games = games_all($link);
    <div class="row ">
     <div class="col-sm-3 col-md-2 sidebar" style="margin-bottom: 20px">
       <ul class="nav nav-sidebar">
-        <li><a href="?page=orders">Orders</a>
+        <li><a href="./?page=orders">Orders</a>
         </li>
       </ul>
       <?php foreach($games as $game): ?>
@@ -41,7 +41,7 @@ $games = games_all($link);
             $pages = explode(",", $pages[0]['pages']);
             ?>
             <?php foreach ($pages as $page): ?>
-            	<li><a href="/?page=<?=$page?>&game=<?=$game['alias']?>"><?=$page?></a></li>
+            	<li><a href="./?page=<?=$page?>&game=<?=$game['alias']?>"><?=$page?></a></li>
             <?php endforeach ?>
           </ul>	
         </li>
@@ -72,8 +72,8 @@ $games = games_all($link);
 </div>
 </div>
 
-<script type="text/javascript" src="/style/jquery-2.2.2.min.js"></script>
-<script type="text/javascript" src="/style/bootstrap.min.js"></script>
-<script type="text/javascript" src="/scripts/main.js"></script>     
+<script type="text/javascript" src="/a!dmin/style/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="/a!dmin/style/bootstrap.min.js"></script>
+<script type="text/javascript" src="/a!dmin/scripts/main.js"></script>     
 </body>
 </html>

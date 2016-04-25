@@ -11,7 +11,7 @@ if(isset($_GET['action'])){
         $text = $_POST['text'];
         update_text($link, $text, $game);
         $text = boost_text($link, $game);
-        header("Location: /?page=boost&game=".$game);
+        header("Location: /a!dmin/?page=boost&game=".$game);
     } 
 
 } else {

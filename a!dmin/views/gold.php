@@ -19,7 +19,7 @@
             <?php foreach ($i as $key => $v):?>
              <td><?=$v?></td>
          <?php endforeach ?>
-         <td id="buttonTh" style="width: 16%;"><a class="btn btn-danger" href="/services/gold.php/?action=delete&game=<?php echo $game?>&id=<?php echo $i['id']?>" >Delete</a>
+         <td id="buttonTh" style="width: 16%;"><a class="btn btn-danger" href="./services/gold.php/?action=delete&game=<?php echo $game?>&id=<?php echo $i['id']?>" >Delete</a>
          <a href="#salesModal" sid="<?php echo $i['id']?>" role="button" class="btn btn-success sales" data-toggle="modal">Sales</a>
          </td>
      </tr>
@@ -31,7 +31,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 class="modal-title" id="myModalLabel">Добавить сервер</h3>
+                <h3 class="modal-title" id="myModalLabel">Добавить скидки для сервера</h3>
             </div>
                 <div class="modal-body">
                 <table class="table table-hower table-sales text-center">
@@ -68,7 +68,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" id="myModalLabel">Добавить сервер.</h3>
             </div>
-            <form method="post" action="/services/gold.php/?action=add&game=<?php echo $game?>">
+            <form method="post" action="./services/gold.php/?action=add&game=<?php echo $game?>">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="inputName">Название сервера :</label>
@@ -85,11 +85,11 @@
                     </div>
                     <div class="form-group">
                         <label for="cur">Название валюты :</label>
-                        <select id="cur"  class="form-control form-item" name="currency">
-                            <?php foreach($currency as $cur):?>
-                            <option><?=$cur['currency_name']?></option>
+                        <select id="cur" class="form-control form-item" name="currency" >
+                            <?php foreach($currency as $cur) :?>
+                                <option><?=$cur['currency_name']?></option>
                             <?php endforeach;?>
-                        </select>
+                        </select> 
                     </div>
                 </div>
                 <div class="modal-footer">
