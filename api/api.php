@@ -1,72 +1,82 @@
 <?php
 
-require_once('../a!dmin/modules/db.php');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-$game_data = array();
-$game_rate = array();
-
-$host='localhost:8889';
+$host='localhost';
 $database='lineage2';
 $user='root';
-$pswd='root';
+$pswd='';
 
-//$dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
-$dbh = db_connect();
+$dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
+
 // ---------- GAMES ----------
 
 if(isset($_GET['games'])) {
-
     if($_GET['games'] == "all") {
 
+        $game_data = array();
         $counter = 0;
         $game_name = "";
+        $menu_name = "";
 
-        $query = "SELECT * FROM games_list";
+        $query = "SELECT games.*, currency.currency_name FROM games LEFT JOIN currency ON games.alias = currency.game_name";
         $res = mysqli_query($dbh, $query);
 
         while($row = mysqli_fetch_array($res)) {
+//            echo print_r($row)."<br>";
+            $menu = array();
+            $pages = explode(",", $row["pages"]);
 
-            $menu_name = "null";
+            foreach ($pages as $page) {
+                $currency = "";
+                switch ($page) {
+                    case "gold":
+                        //HARDCODE
+                        $currency = $row["currency_name"];
+                        if ($currency == "adena") {$menu_name = "Купить адену";}
+                        if ($currency == "col") {$menu_name = "Купить кол";}
 
-            switch ($row['menu_type']) {
-                case "calculator":
-                    $menu_name = "Купить валюту";
-                    break;
-                case "items":
-                    $menu_name = "Купить предметы";
-                    break;
-                case "accounts":
-                    $menu_name = "Купить аккаунт";
-                    break;
-                case "boost":
-                    $menu_name = "Прокачка";
-                    break;
+                        break;
+                    case "items":
+                        $menu_name = "Купить предметы";
+                        break;
+                    case "characters":
+                        $menu_name = "Купить аккаунт";
+                        break;
+                    case "boost":
+                        $menu_name = "Прокачка";
+                        break;
                 };
+                $menu[] = array(
+                    "name" => $menu_name,
+                    "type" => $page,
+                    "currency" => $currency,
+                    "game" =>$row['alias']
+                );
+            }
+            unset($page);
 
             if ($game_name != $row['game_name']) {
                 $game_data[] = array(
-                    'img' => $row['img'],
+                    'img' => "",
                     'name' => $row['game_name'],
+                    'alias' => $row['alias'],
                     'menu' => array()
                 );
+                $game_data[$counter]["menu"] = $menu;
+
             } else {
                 $counter--;
+                //HARDCODE
+                $game_data[$counter]["menu"][] = $menu[0];
             }
-            $menu = array(
-                'name' => $menu_name,
-                'type' => $row['menu_type'],
-                'currency' => $row['param_currency'],
-                'game_name' => $row['game_name']);
-
-            $game_data[$counter]["menu"][] = $menu;
 
             $game_name = $row['game_name'];
             $counter++;
         }
-        header('Content-Type: application/json; charset=utf-8');
         echo json_encode($game_data);
+
     }
 }
 
@@ -75,7 +85,7 @@ if(isset($_GET['games'])) {
 if(isset($_GET['game']) && isset($_GET['currency'])) {
 
     //2 requests to DB because that tables has 2 similar fields 'count', and hard to build json
-
+    $game_rate = array();
     $server_name = "";
     $game_name = $_GET['game'];
     $server_currency = $_GET['currency'];
@@ -179,7 +189,6 @@ if(isset($_POST['orders'])) {
         $order_current_order = array(
             "game" => $order_game_name,
             "server" => $order_game_server,
-//            "money" => $order_calc_money,
             "currency" => $order_currency,
             "number" => $order_count,
             "nickname" => $order_game_nick,
@@ -202,11 +211,11 @@ if(isset($_POST['orders'])) {
 
             //watch every row to clone of current order
             $hasClone = false;
+            $clone_current_order = $order_current_order;
+            unset($clone_current_order['time']);
+
             foreach ($_SESSION['order_temp_table'] as $row) {
                 //compare orders without time
-                //TODO and money
-                $clone_current_order = $order_current_order;
-                unset($clone_current_order['time']);
                 $clone_row = $row;
                 unset($clone_row['time']);
 //                print_r($clone_current_order);
