@@ -32,13 +32,8 @@ if(isset($_GET['games'])) {
                 $currency = "";
                 switch ($page) {
                     case "gold":
-                        //HARDCODE
                         $currency = $row["currency_name"];
-
-                        if ($currency == "adena") {$menu_name = "Купить адену";}
-                        else if ($currency == "col") {$menu_name = "Купить кол";}
-                        else {$menu_name = "Купить валюту";}
-
+                        $menu_name = "Купить " .$currency;
                         break;
                     case "items":
                         $menu_name = "Купить предметы";
@@ -70,8 +65,13 @@ if(isset($_GET['games'])) {
 
             } else {
                 $counter--;
-                //HARDCODE
-                $game_data[$counter]["menu"][] = $menu[0];
+
+                foreach ($menu as $menu_one) {
+                    if ($menu_one["currency"] != "") {
+                        $game_data[$counter]["menu"][] = $menu_one;
+                    }
+                }
+//                $game_data[$counter]["menu"][] = $menu[0];
             }
 
             $game_name = $row['game_name'];
