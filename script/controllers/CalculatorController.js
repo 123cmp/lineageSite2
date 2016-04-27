@@ -22,11 +22,10 @@ angular.module('lt2').controller('CalculatorController',
             maxCommentLength: 150,
             servers: []
         };
-
+        console.log(params);
         var promise = ServerApi.getGameServers(params.game, params.currency);
         promise.then(function(data) {
             $scope.info.servers = data.servers;
-            console.log($scope.info.servers[1]);
         });
 
         $scope.$watch('model.server', function() {

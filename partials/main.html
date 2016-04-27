@@ -3,7 +3,7 @@
     <div class="game" ng-repeat="game in games">
         <img ng-src="{{game.img}}">
         <ul class="game-menu">
-            <li ng-repeat="item in game.menu" ng-bind="item.name" ng-click="goTo(item.type, item.params)"></li>
+            <li ng-repeat="item in game.menu" ng-bind="item.name" ng-click="goTo(item.type, {game: item.game, currency: item.currency})"></li>
         </ul>
         <span class="game-name" ng-bind="game.name"></span>
     </div>

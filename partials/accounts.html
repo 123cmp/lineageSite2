@@ -8,7 +8,7 @@
                 <div ng-class="{'item-half': !accounts[0].server}">Описание</div>
                 <div ng-class="{'item-half': !accounts[0].server}">Цена</div>
             </li>
-            <li ng-repeat="item in accounts">
+            <li ng-repeat="item in accounts track by $index">
                 <div ng-show="accounts[0].server" ng-class="{'item-half': !accounts[0].server}" ng-bind="item.server"></div>
                 <div ng-class="{'item-half': !accounts[0].server}" ng-bind="item.description"></div>
                 <div ng-class="{'item-half': !accounts[0].server}" ng-bind="item.cost"></div>

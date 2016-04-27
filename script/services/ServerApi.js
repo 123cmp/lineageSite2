@@ -82,14 +82,9 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
     function getGames() {
         var dfd = new $q.defer();
 
-        if (games) {
-            dfd.resolve(games);
-        } else {
-            $timeout(function () {
-                games = fakeGames;
-                dfd.resolve(games);
-            }, 1000);
-        }
+        $http.get('/api/api.php?games=all').then(function (result) {
+            dfd.resolve(result.data);
+        });
 
         return dfd.promise;
     }
