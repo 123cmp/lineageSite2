@@ -1,18 +1,15 @@
 <?php
 
-require_once('../a!dmin/modules/db.php');
-
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-/*
+
 $host='localhost';
 $database='lineage2';
 $user='root';
 $pswd='';
 
 $dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
-*/
-$dbh = db_connect();
+
 // ---------- GAMES ----------
 
 if(isset($_GET['games'])) {
@@ -74,7 +71,6 @@ if(isset($_GET['games'])) {
                         $game_data[$counter]["menu"][] = $menu_one;
                     }
                 }
-//                $game_data[$counter]["menu"][] = $menu[0];
             }
 
             $game_name = $row['game_name'];
@@ -169,6 +165,19 @@ if(isset($_GET['accounts'])) {
     }
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($accounts);
+}
+
+// ---------- GAME - BOOST ----------
+
+if(isset($_GET['boost'])) {
+    $boost_gamename = $_GET['boost'];
+
+    $query = "SELECT desc_text FROM boost WHERE game = '".$boost_gamename."'";
+    $res = mysqli_query($dbh, $query);
+    while($row = mysqli_fetch_array($res)) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($row["desc_text"]);
+    }
 }
 
 // ---------- POST - ORDERS ----------
