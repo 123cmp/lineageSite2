@@ -1,8 +1,9 @@
 @import "inputs";
 
-@color1: #EDE7F6;
-@main-color: #673AB7;
-@box-shadow: #aeaeae;
+@color1: rgb(237,231,246);
+@color2: rgba(237,231,246, 0.8);
+@main-color: rgba(42, 48, 65, 0.5);
+@box-shadow: rgba(42, 48, 65, 0.7);
 
 
 * {
@@ -26,16 +27,19 @@ html {
 body {
   height: 100%;
   min-width: 900px;
-  background-color: @color1;
+  background: url("/bg.jpg") no-repeat;
+  background-color: @box-shadow;
+  display: table-cell;
+  background-size: cover;
 }
 
 header {
   background-color: @main-color;
-  -webkit-box-shadow: 0 2px 3px 1px grey;
-  -moz-box-shadow: 0 2px 3px 1px grey;
-  box-shadow: 0 2px 3px 1px grey;
+  -webkit-box-shadow: 0 2px 3px 1px @box-shadow;
+  -moz-box-shadow: 0 2px 3px 1px @box-shadow;
+  box-shadow: 0 2px 3px 1px @box-shadow;
   z-index: 5;
-  position: fixed;
+  //position: fixed;
   top: 0;
   left:0;
   width: 100vw;
@@ -85,20 +89,27 @@ header {
 section.body {
   z-index: 1;
   overflow: hidden;
-  margin-top: 120px;
+  //margin-top: 120px;
   min-height: 100vh;
   height: 100%;
   display: table;
 
+
+
   aside.left-block {
     width: 18vw;
     //float: left;
+    float: left;
     vertical-align: top;
-    background: white;
-    display: table-cell;
-    height: 100%;
-    padding-top: 15px;
-
+    margin-top: 20px;
+    margin-left: 10px;
+    background: @main-color;
+    display: block;
+    //height: 100%;
+    //padding-top: 15px;
+    -webkit-box-shadow: 0 2px 3px 1px @box-shadow;
+    -moz-box-shadow: 0 2px 3px 1px @box-shadow;
+    box-shadow: 0 2px 3px 1px @box-shadow;
     -webkit-transition: max-height 0.5s ease-out 0s;
     -moz-transition: max-height 0.5s ease-out 0s;
     -o-transition: max-height 0.5s ease-out 0s;
@@ -128,7 +139,7 @@ section.body {
       display: none;
       position: absolute;
       z-index: 9;
-      background: white;
+      background: @color2;
       right: 25px;
       text-align: center;
       cursor: pointer;
@@ -186,17 +197,19 @@ section.body {
       text-transform: capitalize;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       text-decoration: none;
-      color: @main-color;
+      color: @color1;
       padding: 10px 0 10px 20px;
-      font-weight: 200;
+      font-weight: 100;
 
       &:hover {
         background-color: @color1;
+        color: @box-shadow;
       }
 
       &.active {
         background-color: @main-color;
-        color: @color1
+        color: @color1;
+        font-weight: 200;
       }
 
     }
@@ -205,16 +218,19 @@ section.body {
 
   .main-container {
     //float: left;
-    width: 60vw;
+    width: 70%;
     position: relative;
     padding: 20px 0;
-    background: @color1;
+    background: @color2;
+    margin-top: 20px;
     min-height: 100vh;
-    -webkit-box-shadow: 0 2px 3px 1px @box-shadow;
-    -moz-box-shadow: 0 2px 3px 1px @box-shadow;
-    box-shadow: 0 2px 3px 1px @box-shadow;
+    margin-left: 2%;
+    //-webkit-box-shadow: 0 2px 3px 1px @box-shadow;
+    //-moz-box-shadow: 0 2px 3px 1px @box-shadow;
+    //box-shadow: 0 2px 3px 1px @box-shadow;
     box-sizing: border-box;
-    display: table-cell;
+    //display: table-cell;
+    float: left;
     vertical-align: top;
     height: 100%;
 
@@ -253,7 +269,7 @@ section.body {
   }
 
   ul.item-list {
-    color: white;
+    color: @color1;
     list-style: none;
     width: 100%;
     margin-top: 30px;
@@ -576,10 +592,18 @@ section.body {
 
   .right-block {
     width: 20%;
-    background: white;
+    //background: white;
     display: table-cell;
     height: 100%;
-    vertical-align: top;
+    //display: block;
+
+    //background: @main-color;
+    //height: 100%;
+    //padding-top: 15px;
+    //-webkit-box-shadow: 0 2px 3px 1px @box-shadow;
+    //-moz-box-shadow: 0 2px 3px 1px @box-shadow;
+    //box-shadow: 0 2px 3px 1px @box-shadow;
+
     @media (max-width: 600px) {
       width: 100vw;
       height: auto;
