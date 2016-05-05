@@ -6,7 +6,7 @@
         <h1>Калькулятор валюты</h1>
         <div class="calculator-row">
             <div class="calculator-column">
-                <div class="group" ng-show="info.servers.length">
+                <div class="group" ng-class="{'invalid' : invalid.server}" ng-show="info.servers.length">
                     <div class="select-wrapper" ng-class="{'active': isServerChoose}">
                         <select required ng-model="model.server">
                             <option value="" disabled selected>Сервер</option>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <div class="group">
+                <div class="group" ng-class="{'invalid' : invalid.realM}">
                     <input type="number" ng-change="onChangeRealMoney()" ng-model="model.realM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
@@ -24,14 +24,14 @@
             </div>
 
             <div class="calculator-column">
-                <div class="group">
+                <div class="group" ng-class="{'invalid' : invalid.nickname}">
                     <input type="text" ng-model="model.nickname" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Ник персонажа</label>
                 </div>
 
-                <div class="group">
+                <div class="group" ng-class="{'invalid' : invalid.gameM}">
                     <input type="number" ng-change="onChangeGameMoney()" ng-model="model.gameM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
@@ -42,7 +42,7 @@
 
         <div class="calculator-row">
             <div class="calculator-column full">
-                <div class="group">
+                <div class="group" ng-class="{'invalid' : invalid.contact}">
                     <input type="text" ng-model="model.contact" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
@@ -53,7 +53,7 @@
 
         <div class="calculator-row">
             <div class="calculator-column full">
-                <div class="group">
+                <div class="group" ng-class="{'invalid' : invalid.comment}">
                     <textarea id="comment"  ng-model="model.comment" required max-length="{{info.maxCommentLength}}"></textarea>
                     <label for="comment">Комментарий</label>
                     <div class="char-counter">

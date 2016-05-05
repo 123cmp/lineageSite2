@@ -129,6 +129,43 @@ select:focus {
   border-top: 0.375em solid rgba(0, 0, 0, 0.12);
   pointer-events: none;
 }
+.accordion {
+  margin-left: 30px;
+}
+.accordion div {
+  margin-top: 15px;
+}
+.accordion div .question {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  cursor: pointer;
+}
+.accordion div .question:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 100%;
+  position: absolute;
+  background: transparent;
+  border: 1px solid rgba(42, 48, 65, 0.7);
+  margin-left: -20px;
+  margin-top: 6px;
+}
+.accordion div .article {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 5px 20px;
+  display: none;
+  overflow: hidden;
+  font-style: italic;
+}
+.accordion div.active .question:before {
+  background: rgba(42, 48, 65, 0.7);
+}
+.accordion div.active .article {
+  display: block;
+}
 * {
   margin: 0;
   padding: 0;
@@ -278,19 +315,18 @@ section.body aside.left-block {
   vertical-align: top;
   margin-top: 20px;
   margin-left: 10px;
-  background: rgba(42, 48, 65, 0.5);
   display: block;
-  -webkit-box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
-  -moz-box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
-  box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
-  -webkit-transition: max-height 0.5s ease-out 0s;
-  -moz-transition: max-height 0.5s ease-out 0s;
-  -o-transition: max-height 0.5s ease-out 0s;
-  transition: max-height 0.5s ease-out 0s;
-  padding: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ede7f6;
   font-weight: 100;
+}
+section.body aside.left-block .payments {
+  padding: 15px;
+  background: rgba(42, 48, 65, 0.5);
+  -webkit-box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
+  -moz-box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
+  box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
+  margin-bottom: 30px;
 }
 section.body aside.left-block ul {
   list-style: none;
@@ -410,6 +446,17 @@ section.body .static-block {
 section.body .static-block a {
   color: #927940;
 }
+section.body .static-block .suppliers-faq {
+  margin-top: 20px;
+}
+section.body .static-block .suppliers-faq .question {
+  display: block;
+  font-weight: 500;
+}
+section.body .static-block .suppliers-faq .answer {
+  display: block;
+  font-style: italic;
+}
 section.body .static-block .suppliers-contacts {
   list-style: none;
 }
@@ -444,7 +491,7 @@ section.body .static-block h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 36px;
   color: rgba(42, 48, 65, 0.5);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: 100;
 }
 section.body ul.item-list {
@@ -709,6 +756,19 @@ section.body .calculator-wrapper .calculator .calculator-column .group .bar:befo
 }
 section.body .calculator-wrapper .calculator .calculator-column .group .bar:after {
   background-color: rgba(42, 48, 65, 0.5);
+}
+section.body .calculator-wrapper .calculator .calculator-column .group.invalid {
+  color: #f64f42;
+  border-color: #f64f42;
+}
+section.body .calculator-wrapper .calculator .calculator-column .group.invalid .bar {
+  width: 100%;
+}
+section.body .calculator-wrapper .calculator .calculator-column .group.invalid .bar:before {
+  background-color: #f64f42;
+}
+section.body .calculator-wrapper .calculator .calculator-column .group.invalid .bar:after {
+  background-color: #f64f42;
 }
 section.body .right-block {
   width: 20%;

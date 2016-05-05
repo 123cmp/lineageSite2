@@ -1,0 +1,48 @@
+.accordion {
+  margin-left: 30px;
+  div {
+    margin-top: 15px;
+    .question {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 200;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        display: block;
+        border-radius: 100%;
+        position: absolute;
+        background: transparent;
+        border: 1px solid @box-shadow;
+        margin-left: -20px;
+        margin-top: 6px;
+      }
+    }
+
+    .article {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      padding: 5px 20px;
+      display: none;
+      overflow: hidden;
+      font-style: italic;
+    }
+
+    &.active {
+      .question {
+        &:before {
+          background: @box-shadow;
+        }
+      }
+      .article {
+        display: block;
+      }
+
+    }
+
+  }
+
+
+}

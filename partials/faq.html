@@ -1,0 +1,58 @@
+<div class="static-block">
+    <h1>Краткие ответы на интересующие вас вопросы</h1>
+
+    <div class="accordion">
+        <div ng-click="activate(0)" ng-class="{'active' : active == 0}">
+            <div class="question">Как мне купить игровые ценности?</div>
+            <div class="article">
+                На <a ui-sref="main">ГЛАВНОЙ</a> странице выберите
+                интресующую вас игру и из всплывающиго меню выберите пункт КУПИТЬ, на открывшейся странице следуйте
+                инструкции.
+                <br/>
+                Альтернативный вариант вы просто можете написать нашему <a ui-sref="static.contacts">консультанту</a>
+            </div>
+        </div>
+
+        <div ng-click="activate(1)" ng-class="{'active' : active == 1}">
+            <div class="question">Как продать игровые ценности?</div>
+            <div class="article">Gold Warden всегда готов купить вашу игровую валюту, цености а также
+                акаунты. Для продажи вам необходимо обратится к нашему <a ui-sref="static.contacts">консультанту</a>
+            </div>
+        </div>
+
+        <div ng-click="activate(2)" ng-class="{'active' : active == 2}">
+            <div class="question">Я хочу Купить/Продать ценности на серверах которых нет в вашем списке</div>
+            <div class="article">Если сервер отсутствует в списке просто свяжитесь с нашим консультантом и
+                получите у него полную консультацию. <a ui-sref="static.contacts">КОНТАКТЫ</a>
+            </div>
+        </div>
+
+        <div ng-click="activate(3)" ng-class="{'active' : active == 3}">
+            <div class="question">Я хочу Купить/Продать ценности в игре которая у вас отсутствует</div>
+            <div class="article">Свяжитесь с нашим консультантом и мы вам обязательно поможем. <a
+                    ui-sref="static.contacts">КОНТАКТЫ</a>
+            </div>
+        </div>
+
+        <div ng-click="activate(4)" ng-class="{'active' : active == 4}">
+            <div class="question">Как быстро я смогу получить игровые ценности?</div>
+            <div class="article">Обычно доставка занимает 15 минут, но в некоторых случаях может
+                затянутся до 24 часов.
+            </div>
+        </div>
+
+        <div ng-click="activate(5)" ng-class="{'active' : active == 5}">
+            <div class="question">Каковы гарантии что меня не обамнут?</div>
+            <div class="article"><a ui-sref="static.guarantee">Гарантии</a>; <a
+                    ui-sref="static.reviews">Отзывы</a>
+            </div>
+        </div>
+        <div ng-click="activate(6)" ng-class="{'active' : active == 6}">
+            <div class="question">Если я оплатил заказ но он мне больше не интересен.</div>
+            <div class="article">Если ваш заказ не завершен мы без проблем вернем уплаченую вами сумму.
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -13,5 +13,20 @@ angular.module('lt2').controller('IndexController',
             function(event, toState){
                 if(toState && toState.name)
                     $scope.currentState = toState.name;
-            })
+            });
+
+        $scope.createWidget = function() {
+            var widgets = document.getElementById('vk_groups');
+            widgets.innerHTML = "";
+            var block = document.getElementsByClassName('left-block')[0];
+            var width = block.offsetWidth;
+            var height = 300;
+            VK.Widgets.Group("vk_groups", {mode: 0, width: width, height: height, color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 120761016);
+        };
+
+        window.onresize = function() {
+            $scope.createWidget();
+        };
+
+        window.onresize();
     }]);

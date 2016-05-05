@@ -119,11 +119,30 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
     }
 
 
+    function sendOrder(game, currency, server, nickname, contact, pay, buy, comment) {
+        var dfd = new $q.defer();
+        $http.post('/api/api.php', {
+            orders: true,
+            game_name: game,
+            game_server: server,
+            currency: currency,
+            count: buy,
+            game_nick: nickname,
+            contact: contact,
+            comment: comment
+        }).then(function (result) {
+            dfd.resolve(result.data);
+        });
+
+        return dfd.promise;
+    }
+
 
     return {
         getGames: getGames,
         getItems: getItems,
         getAccounts: getAccounts,
-        getGameServers: getGameServers
+        getGameServers: getGameServers,
+        sendOrder: sendOrder
     }
 }]);

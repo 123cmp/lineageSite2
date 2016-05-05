@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LT2</title>
+    <title>GoldWarden</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
     <link href='bower_components/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+    <link href='bower_components/ng-dialog/css/ngDialog.min.css' rel='stylesheet' type='text/css'>
+    <link href='bower_components/ng-dialog/css/ngDialog-theme-default.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="lt2" ng-controller="IndexController">
@@ -20,42 +22,47 @@
             <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
             <a ng-class="{'active': currentState == 'static.suppliers'}" ui-sref="static.suppliers">Поставщикам</a>
             <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
-            <a ng-class="{'active': currentState == 'static.faq'}" ui-sref="static.faq">FAQ</a>
+            <a ng-class="{'active': currentState == 'faq'}" ui-sref="faq">FAQ</a>
             <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
         </div>
 
         <ul class="contacts">
             <li>
                 <i class="contacts-icon skype-icon"></i>
-                skype: <a class="contacts-item" href="skype:goldwarden.ru?chat">goldwarden.ru</a>
+                <a class="contacts-item" href="skype:goldwarden.ru?chat">goldwarden.ru</a>
             </li>
             <li>
                 <i class="contacts-icon vk-icon"></i>
-                vk.com: <a class="contacts-item" href="http://vk.com/id363624492">http://vk.com/id363624492</a>
+                <a class="contacts-item" target="_blank" href="http://vk.com/id363624492">http://vk.com/id363624492</a>
             </li>
             <li>
                 <i class="contacts-icon icq-icon"></i>
-                icq: <span class="contacts-item">665244691</span>
+                <span class="contacts-item">665244691</span>
             </li>
         </ul>
     </header>
     <section class="body">
         <aside class="left-block">
-            <h3>Мы принимаем:</h3>
-            <ul>
-                <li>
-                    <i class="pay-icon webmoney-icon"></i> Webmoney
-                </li>
-                <li>
-                    <i class="pay-icon qiwi-icon"></i>Qiwi
-                </li>
-                <li>
-                    <i class="pay-icon yandex-icon"></i>Яндекс
-                </li>
-                <li>
-                    <i class="pay-icon privat24-icon"></i>Приват24
-                </li>
-            </ul>
+            <div class="payments">
+                <h3>Мы принимаем:</h3>
+                <ul>
+                    <li>
+                        <i class="pay-icon webmoney-icon"></i> Webmoney
+                    </li>
+                    <li>
+                        <i class="pay-icon qiwi-icon"></i>Qiwi
+                    </li>
+                    <li>
+                        <i class="pay-icon yandex-icon"></i>Яндекс
+                    </li>
+                    <li>
+                        <i class="pay-icon privat24-icon"></i>Приват24
+                    </li>
+                </ul>
+            </div>
+
+            <div id="vk_groups"></div>
+
         </aside>
         <section class="main-container">
            <ui-view ></ui-view>
@@ -66,9 +73,12 @@
         </aside>
     </section>
 
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
 
 
     <script src="script/app.js"></script>
@@ -78,10 +88,16 @@
 
     <script src="script/controllers/IndexController.js"></script>
     <script src="script/controllers/MainPageController.js"></script>
+    <script src="script/controllers/FAQController.js"></script>
     <script src="script/controllers/ItemsController.js"></script>
     <script src="script/controllers/AccountsController.js"></script>
     <script src="script/controllers/CalculatorController.js"></script>
 
+    <!— BEGIN JIVOSITE CODE {literal} —>
+    <script type='text/javascript'>
+        (function(){ var widget_id = 'p4NDs0RGET';var d=document;var w=window;function l(){
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+    <!— {/literal} END JIVOSITE CODE —>
 
 </body>
 </html>
