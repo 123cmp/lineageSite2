@@ -12,16 +12,32 @@
     <header>
         <!--<img src="http://www.ibiza-voice.com/media/news/Labels/materialseries/MaterialLogo.png" class="logo"/>-->
         <div class="title">
-            <h1>Gold Warden</h1>
+            <h1>GoldWarden</h1>
         </div>
 
         <div class="header-menu">
             <a ng-class="{'active': currentState == 'main'}" ui-sref="main">Главная</a>
             <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
+            <a ng-class="{'active': currentState == 'static.suppliers'}" ui-sref="static.suppliers">Поставщикам</a>
             <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
             <a ng-class="{'active': currentState == 'static.faq'}" ui-sref="static.faq">FAQ</a>
             <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
         </div>
+
+        <ul class="contacts">
+            <li>
+                <i class="contacts-icon skype-icon"></i>
+                skype: <a class="contacts-item" href="skype:goldwarden.ru?chat">goldwarden.ru</a>
+            </li>
+            <li>
+                <i class="contacts-icon vk-icon"></i>
+                vk.com: <a class="contacts-item" href="http://vk.com/id363624492">http://vk.com/id363624492</a>
+            </li>
+            <li>
+                <i class="contacts-icon icq-icon"></i>
+                icq: <span class="contacts-item">665244691</span>
+            </li>
+        </ul>
     </header>
     <section class="body">
         <aside class="left-block">

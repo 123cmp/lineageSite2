@@ -146,10 +146,10 @@ html {
 body {
   height: 100%;
   min-width: 900px;
-  background: url("/bg.jpg") no-repeat;
-  background-color: rgba(42, 48, 65, 0.7);
+  background: url("/bg12.jpg") no-repeat;
   display: table-cell;
   background-size: cover;
+  width: 100vw;
   padding-top: 195px;
 }
 header {
@@ -173,14 +173,15 @@ header {
 }
 header .header-menu {
   position: relative;
-  width: 490px;
+  width: 100%;
   left: 0;
+  display: inline-block;
+  text-align: center;
   right: 0;
   margin: auto;
   margin-top: 60px;
 }
 header .header-menu a {
-  float: left;
   height: 40px;
   line-height: 40px;
   display: inline;
@@ -216,17 +217,40 @@ header img.logo {
     display: inline-block;
   }
 }
-header .title {
-  color: #ede7f6;
+header ul.contacts {
+  display: block;
+  position: absolute;
+  right: 6%;
+  top: 50px;
+  list-style: none;
+}
+header ul.contacts li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  color: #ede7f6;
+  font-weight: 100;
+  margin-top: 10px;
+}
+header ul.contacts li .contacts-item {
+  font-weight: 200;
+  color: #ede7f6;
+}
+header .title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 34px;
   position: relative;
   right: 0;
   left: 0;
   margin: auto;
-  width: 290px;
+  width: 100%;
+  text-align: center;
   top: 25px;
-  text-shadow: 2px 2px 7px #000000;
+  -webkit-text-stroke: 1px rgba(253, 208, 135, 0.5);
+  color: #D5AD6D;
+  /*if no support for background-clip*/
+  background: -webkit-linear-gradient(transparent, transparent), -webkit-linear-gradient(top, #d5ad6d 0%, #d5ad6d 26%, #e2ba78 35%, #a37e43 45%, #91703b 61%, #d5ad6d 100%);
+  background: -o-linear-gradient(transparent, transparent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 @media (max-width: 600px) {
   header .title {
@@ -246,6 +270,7 @@ section.body {
   min-height: 100vh;
   height: 100%;
   display: table;
+  width: 100%;
 }
 section.body aside.left-block {
   width: 18vw;
@@ -273,29 +298,6 @@ section.body aside.left-block ul {
 }
 section.body aside.left-block ul li {
   margin: 9px 0;
-}
-section.body aside.left-block ul li i.pay-icon {
-  width: 16px;
-  height: 16px;
-  display: block;
-  float: left;
-  margin-right: 6px;
-}
-section.body aside.left-block ul li i.pay-icon.webmoney-icon {
-  background: url("/img/webmoney.png");
-  background-size: contain;
-}
-section.body aside.left-block ul li i.pay-icon.privat24-icon {
-  background: url("/img/privat24.png");
-  background-size: contain;
-}
-section.body aside.left-block ul li i.pay-icon.qiwi-icon {
-  background: url("/img/qiwi.png");
-  background-size: contain;
-}
-section.body aside.left-block ul li i.pay-icon.yandex-icon {
-  background: url("/img/yandex.ico");
-  background-size: contain;
 }
 section.body aside.left-block h3 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -405,12 +407,38 @@ section.body .static-block {
   font-weight: 200;
   margin-bottom: 10px;
 }
+section.body .static-block a {
+  color: #927940;
+}
+section.body .static-block .suppliers-contacts {
+  list-style: none;
+}
+section.body .static-block .suppliers-contacts i {
+  padding-top: 5px;
+  background-position-y: 4px;
+  background-repeat: no-repeat;
+}
+section.body .static-block .suppliers-pay {
+  list-style: none;
+}
+section.body .static-block .suppliers-pay i {
+  padding-top: 5px;
+  background-position-y: 4px;
+  background-repeat: no-repeat;
+}
 section.body .static-block p {
   margin-top: 15px;
   text-indent: 1.5em;
-  /* Отступ первой строки */
   text-align: justify;
   line-height: 1.5em;
+}
+section.body .static-block li {
+  margin-top: 15px;
+  text-align: justify;
+  line-height: 1.5em;
+}
+section.body .static-block li ul {
+  margin-left: 25px;
 }
 section.body .static-block h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -726,4 +754,54 @@ section.body .right-block {
   to {
     transform: rotate(180deg);
   }
+}
+i.pay-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+  margin-right: 6px;
+}
+i.pay-icon.webmoney-icon {
+  background: url("/img/webmoney.png");
+  background-size: contain;
+}
+i.pay-icon.privat24-icon {
+  background: url("/img/privat24.png");
+  background-size: contain;
+}
+i.pay-icon.qiwi-icon {
+  background: url("/img/qiwi.png");
+  background-size: contain;
+}
+i.pay-icon.yandex-icon {
+  background: url("/img/yandex.ico");
+  background-size: contain;
+}
+i.contacts-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+  margin-right: 6px;
+}
+i.contacts-icon.skype-icon {
+  background: url("/img/skype.png");
+  background-size: contain;
+}
+i.contacts-icon.icq-icon {
+  background: url("/img/icq.png");
+  background-size: contain;
+}
+i.contacts-icon.vk-icon {
+  background: url("/img/vk.png");
+  background-size: contain;
+}
+i.contacts-icon.tel-icon {
+  background: url("/img/tel.png");
+  background-size: contain;
+}
+i.contacts-icon.email-icon {
+  background: url("/img/email.png");
+  background-size: contain;
 }

@@ -2,6 +2,7 @@
 
 @color1: rgb(237,231,246);
 @color2: rgba(237,231,246, 0.8);
+@color3: rgba(237,231,246, 0.3);
 @main-color: rgba(42, 48, 65, 0.5);
 @box-shadow: rgba(42, 48, 65, 0.7);
 //@main-color: rgba(3, 13, 3, 0.5);
@@ -28,10 +29,11 @@ html {
 body {
   height: 100%;
   min-width: 900px;
-  background: url("/bg.jpg") no-repeat;
-  background-color: @box-shadow;
+  background: url("/bg12.jpg") no-repeat;
+  //background-color: @box-shadow;
   display: table-cell;
   background-size: cover;
+  width: 100vw;
   padding-top: 195px;
 
 }
@@ -55,13 +57,14 @@ header {
 
   .header-menu {
     position: relative;
-    width: 490px;
+    width: 100%;
     left: 0;
+    display: inline-block;
+    text-align: center;
     right: 0;
     margin: auto;
     margin-top: 60px;
     a {
-      float:left;
       height: 40px;
       line-height: 40px;
       display: inline;
@@ -105,18 +108,53 @@ header {
     }
   }
 
+  ul.contacts {
+    display: block;
+    //background: @color3;
+    position: absolute;
+    right: 6%;
+    top: 50px;
+    list-style: none;
+
+    li {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: @color1;
+      font-weight: 100;
+      margin-top: 10px;
+
+
+
+      .contacts-item {
+        font-weight: 200;
+        color: @color1;
+      }
+    }
+
+  }
+
   .title {
     //margin: 20px 33%;
-    color: @color1;
+    //color: @color1;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 24px;
+    font-size: 34px;
     position: relative;
     right: 0;
     left: 0;
     margin: auto;
-    width: 290px;
+    width: 100%;
+    text-align: center;
+
     top: 25px;
-    text-shadow: 2px 2px 7px #000000;
+    -webkit-text-stroke: 1px rgba(253,208,135, 0.5);
+
+    color:	#D5AD6D; /*if no support for background-clip*/
+
+    background: -webkit-linear-gradient(transparent, transparent),
+    -webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 
     @media (max-width: 600px) {
       clear: both;
@@ -140,7 +178,7 @@ section.body {
   min-height: 100vh;
   height: 100%;
   display: table;
-
+  width: 100%;
 
 
   aside.left-block {
@@ -175,33 +213,7 @@ section.body {
       li {
         margin: 9px 0;
 
-        i.pay-icon {
-          width: 16px;
-          height: 16px;
-          display: block;
-          float: left;
-          margin-right: 6px;
 
-          &.webmoney-icon {
-            background: url("/img/webmoney.png");
-            background-size: contain;
-          }
-
-          &.privat24-icon {
-            background: url("/img/privat24.png");
-            background-size: contain;
-          }
-
-          &.qiwi-icon {
-            background: url("/img/qiwi.png");
-            background-size: contain;
-          }
-
-          &.yandex-icon {
-            background: url("/img/yandex.ico");
-            background-size: contain;
-          }
-        }
       }
     }
 
@@ -330,11 +342,48 @@ section.body {
     font-weight: 200;
     margin-bottom: 10px;
 
+    a {
+      color: rgb(146, 121, 64)
+    }
+
+    .suppliers-contacts {
+      list-style: none;
+
+
+
+      i {
+        padding-top: 5px;
+        background-position-y: 4px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .suppliers-pay {
+      list-style: none;
+
+      i {
+        padding-top: 5px;
+        background-position-y: 4px;
+        background-repeat: no-repeat;
+      }
+    }
+
     p {
       margin-top: 15px;
-      text-indent: 1.5em; /* Отступ первой строки */
+      text-indent: 1.5em;
       text-align: justify;
       line-height: 1.5em;
+    }
+
+    li {
+      margin-top: 15px;
+      //text-indent: 1.5em; /* Отступ первой строки */
+      text-align: justify;
+      line-height: 1.5em;
+
+      ul {
+        margin-left: 25px;
+      }
     }
 
     h1 {
@@ -731,3 +780,63 @@ section.body {
     }
 }
 
+i.pay-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+  margin-right: 6px;
+
+  &.webmoney-icon {
+    background: url("/img/webmoney.png");
+    background-size: contain;
+  }
+
+  &.privat24-icon {
+    background: url("/img/privat24.png");
+    background-size: contain;
+  }
+
+  &.qiwi-icon {
+    background: url("/img/qiwi.png");
+    background-size: contain;
+  }
+
+  &.yandex-icon {
+    background: url("/img/yandex.ico");
+    background-size: contain;
+  }
+}
+
+i.contacts-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+  margin-right: 6px;
+
+  &.skype-icon {
+    background: url("/img/skype.png");
+    background-size: contain;
+  }
+
+  &.icq-icon {
+    background: url("/img/icq.png");
+    background-size: contain;
+  }
+
+  &.vk-icon {
+    background: url("/img/vk.png");
+    background-size: contain;
+  }
+
+  &.tel-icon {
+    background: url("/img/tel.png");
+    background-size: contain;
+  }
+
+  &.email-icon {
+    background: url("/img/email.png");
+    background-size: contain;
+  }
+}

@@ -7,7 +7,8 @@ angular.module('lt2').controller('MainPageController',
         $scope.games = games;
 
         angular.forEach($scope.games, function(v) {
-            if(!v.img) v.img = 'http://vignette3.wikia.nocookie.net/galaxylife/images/7/7c/Noimage.png/revision/latest?cb=20120622041841';
+            console.log(v.img);
+            if(!v.img) v.img = 'http://epaper2.mid-day.com/images/no_image_thumb.gif';
         });
     });
 

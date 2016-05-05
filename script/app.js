@@ -48,6 +48,10 @@ angular.module('lt2',
             url: "/boost",
             templateUrl: "partials/static/boost.html"
         })
+        .state('static.suppliers', {
+            url: "/suppliers",
+            templateUrl: "partials/static/suppliers.html"
+        })
         .state('static.guarantee', {
             url: "/guarantee",
             templateUrl: "partials/static/guarantee.html"

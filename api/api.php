@@ -1,14 +1,19 @@
 <?php
 
+require_once('../a!dmin/modules/db.php');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
+/*
 $host='localhost';
 $database='lineage2';
 $user='root';
 $pswd='';
 
 $dbh = mysqli_connect($host, $user, $pswd, $database ) or die("cant connect to MySQL.");
+*/
+
+$dbh = db_connect();
 
 // ---------- GAMES ----------
 
