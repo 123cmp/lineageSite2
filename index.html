@@ -4,26 +4,17 @@
     <meta charset="UTF-8">
     <title>GoldWarden</title>
     <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
     <link href='bower_components/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
     <link href='bower_components/ng-dialog/css/ngDialog.min.css' rel='stylesheet' type='text/css'>
     <link href='bower_components/ng-dialog/css/ngDialog-theme-default.css' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="lt2" ng-controller="IndexController">
     <header>
         <!--<img src="http://www.ibiza-voice.com/media/news/Labels/materialseries/MaterialLogo.png" class="logo"/>-->
         <div class="title">
             <h1>GoldWarden</h1>
-        </div>
-
-        <div class="header-menu">
-            <a ng-class="{'active': currentState == 'main'}" ui-sref="main">Главная</a>
-            <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
-            <a ng-class="{'active': currentState == 'static.suppliers'}" ui-sref="static.suppliers">Поставщикам</a>
-            <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
-            <a ng-class="{'active': currentState == 'faq'}" ui-sref="faq">FAQ</a>
-            <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
         </div>
 
         <ul class="contacts">
@@ -40,6 +31,17 @@
                 <span class="contacts-item">665244691</span>
             </li>
         </ul>
+
+        <div class="header-menu">
+            <a ng-class="{'active': currentState == 'main'}" ui-sref="main">Главная</a>
+            <a ng-class="{'active': currentState == 'static.guarantee'}" ui-sref="static.guarantee">Гарантии</a>
+            <a ng-class="{'active': currentState == 'static.suppliers'}" ui-sref="static.suppliers">Поставщикам</a>
+            <a ng-class="{'active': currentState == 'static.reviews'}" ui-sref="static.reviews">Отзывы</a>
+            <a ng-class="{'active': currentState == 'faq'}" ui-sref="faq">FAQ</a>
+            <a ng-class="{'active': currentState == 'static.contacts'}" ui-sref="static.contacts">Контакты</a>
+        </div>
+
+
     </header>
     <section class="body">
         <aside class="left-block">

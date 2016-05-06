@@ -124,7 +124,7 @@ angular.module('lt2').controller('CalculatorController',
         };
 
         $scope.send = function() {
-            $scope.allValidation = true;
+
             if($scope.validateForm()){
                 ServerApi.sendOrder(
                     params.game,
@@ -136,8 +136,21 @@ angular.module('lt2').controller('CalculatorController',
                     $scope.model.gameM,
                     $scope.model.comment
                 ).then(function() {
+                        $scope.model = {
+                            server: "",
+                            sale: "",
+                            payWithSale: "",
+                            comment:"",
+                            nickname: "",
+                            contact: "",
+                            realM: "",
+                            gameM: "",
+                            currency: params.currency
+                        };
                         ngDialog.open({ template: '<h2>Ваша заявка принята</h2>', plain: true});
                     });
+            } else {
+                $scope.allValidation = true;
             }
 
         };

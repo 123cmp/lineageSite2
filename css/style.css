@@ -195,6 +195,16 @@ body {
   width: 100vw;
   padding-top: 195px;
 }
+@media (max-width: 930px) {
+  body {
+    padding-top: 295px;
+  }
+}
+@media (max-width: 650px) {
+  body {
+    padding-top: 285px;
+  }
+}
 header {
   background-color: rgba(42, 48, 65, 0.5);
   -webkit-box-shadow: 0 2px 3px 1px rgba(42, 48, 65, 0.7);
@@ -208,9 +218,14 @@ header {
   position: fixed;
   padding-bottom: 70px;
 }
-@media (max-width: 600px) {
+@media (max-width: 930px) {
   header {
-    text-align: center;
+    height: 225px;
+  }
+}
+@media (max-width: 650px) {
+  header {
+    height: 275px;
     position: absolute;
   }
 }
@@ -223,6 +238,11 @@ header .header-menu {
   right: 0;
   margin: auto;
   margin-top: 60px;
+}
+@media (max-width: 930px) {
+  header .header-menu {
+    margin-top: 50px;
+  }
 }
 header .header-menu a {
   height: 40px;
@@ -267,11 +287,28 @@ header ul.contacts {
   top: 50px;
   list-style: none;
 }
+@media (max-width: 930px) {
+  header ul.contacts {
+    display: block;
+    position: static;
+    margin-top: 40px;
+    list-style: none;
+    text-align: center;
+  }
+  header ul.contacts i {
+    position: absolute;
+    margin-left: -20px;
+    display: inline;
+    margin-top: 2px;
+    float: none;
+  }
+}
 header ul.contacts li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ede7f6;
   font-weight: 100;
   margin-top: 10px;
+  /* right: 6%; */
 }
 header ul.contacts li .contacts-item {
   font-weight: 200;
@@ -294,15 +331,6 @@ header .title {
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-@media (max-width: 600px) {
-  header .title {
-    clear: both;
-    display: inline-block;
-    position: static;
-    width: 100%;
-    margin-bottom: 15px;
-  }
 }
 header .title h1 {
   font-weight: 500;
@@ -354,6 +382,7 @@ section.body aside.left-block h3 {
     height: auto;
     max-height: 900px;
     display: block;
+    margin: 0;
     margin-top: 80px;
   }
 }
@@ -430,6 +459,13 @@ section.body .main-container {
   float: left;
   vertical-align: top;
   height: 100%;
+}
+@media (max-width: 600px) {
+  section.body .main-container {
+    clear: both;
+    margin: 0;
+    width: 100vw;
+  }
 }
 @media (max-width: 600px) {
   section.body .main-container {
@@ -895,6 +931,13 @@ footer {
   font-weight: 200;
   font-size: 14px;
   color: #ede7f6;
+}
+@media (max-width: 600px) {
+  footer {
+    width: 100vw;
+    display: block;
+    margin-top: 80px;
+  }
 }
 .sale-text {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
