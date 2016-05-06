@@ -5,7 +5,7 @@ angular.module('lt2').controller('AccountsController',
         var params = $state.params.object;
         if(params)  $localStorage.accountsParams = params;
         else params = $localStorage.accountsParams;
-
+        $scope.textFile = "";
         if(!params) $state.go('main');
         else {
             if(params.game) {
@@ -13,8 +13,16 @@ angular.module('lt2').controller('AccountsController',
                     console.log(accounts);
                     $scope.accounts = accounts;
                 });
+
+                ServerApi.getText(params.game, 'accounts').then(function(result) {
+                    $scope.textFile = 'partials/texts/' + result[0].file;
+                });
             }
+
+
         }
+
+
 
 
     }]);

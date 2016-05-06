@@ -1,5 +1,5 @@
 <div class="calculator-wrapper">
-    <div ng-include src="'partials/static/calculator.html'"></div>
+    <div ng-include="textFile"></div>
 
     <div class="calculator">
 
@@ -85,4 +85,18 @@
 
 
     </div>
+    <div class="sales" ng-show="currentServer.sales && currentServer.sales.length">
+        <h3>Скидки:</h3>
+        <ul class="item-list">
+            <li class="header">
+                <div class="item-half">От</div>
+                <div class="item-half">Скидка</div>
+            </li>
+            <li ng-repeat="sale in currentServer.sales track by $index">
+                <div class="item-half"><span ng-bind="sale.from"></span> <span ng-bind="model.currency"></span></div>
+                <div class="item-half"><span ng-bind="sale.value"></span>%</div>
+            </li>
+        </ul>
+    </div>
+
 </div>

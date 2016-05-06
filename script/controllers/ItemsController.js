@@ -11,6 +11,10 @@ angular.module('lt2').controller('ItemsController',
         if(params.game) {
             ServerApi.getItems(params.game).then(function (items) {
                 $scope.items = items;
-            })
+            });
+
+            ServerApi.getText(params.game, 'items').then(function(result) {
+                $scope.textFile = 'partials/texts/' + result[0].file;
+            });
         }
     }]);

@@ -439,6 +439,13 @@ section.body .main-container {
     margin-top: 0;
   }
 }
+section.body .sales {
+  text-align: center;
+  color: rgba(42, 48, 65, 0.5);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
 section.body .static-block {
   display: block;
   width: 100%;
@@ -521,6 +528,9 @@ section.body ul.item-list li {
   color: rgba(42, 48, 65, 0.5);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
+  display: block;
+  float: none;
+  clear: both;
 }
 section.body ul.item-list li.header {
   font-weight: 600;

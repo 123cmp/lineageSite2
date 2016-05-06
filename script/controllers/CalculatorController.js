@@ -10,7 +10,7 @@ angular.module('lt2').controller('CalculatorController',
         else params = $localStorage.itemsParams;
 
         $scope.allValidation = false;
-
+        $scope.textFile = "";
         $scope.model = {
             server: "",
             sale: "",
@@ -35,6 +35,10 @@ angular.module('lt2').controller('CalculatorController',
             $scope.info.servers = data.servers;
         });
 
+        ServerApi.getText(params.game, params.currency).then(function(result) {
+            $scope.textFile = 'partials/texts/' + result[0].file;
+        });
+
         $scope.$watch('model.server', function() {
             if($scope.model.server) {
                 $scope.isServerChoose = true;
@@ -56,7 +60,6 @@ angular.module('lt2').controller('CalculatorController',
             };
 
             if(!$scope.model.server) $scope.invalid.server = true;
-            if(!$scope.model.comment) $scope.invalid.comment = true;
             if(!$scope.model.nickname) $scope.invalid.nickname = true;
             if(!$scope.model.contact) $scope.invalid.contact = true;
             if(!$scope.model.realM) $scope.invalid.realM = true;

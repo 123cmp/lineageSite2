@@ -128,6 +128,15 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
         return dfd.promise;
     }
 
+    function getText(game, type) {
+        var dfd = new $q.defer();
+        $http.get('/api/api.php?text=true&game=' + game + '&type=' + type).then(function (result) {
+            dfd.resolve(result.data);
+        });
+
+        return dfd.promise;
+    }
+
 
     function sendOrder(game, currency, server, nickname, contact, pay, buy, comment) {
         var dfd = new $q.defer();
@@ -154,6 +163,7 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
         getAccounts: getAccounts,
         getGameServers: getGameServers,
         sendOrder: sendOrder,
-        getBoost: getBoost
+        getBoost: getBoost,
+        getText: getText
     }
 }]);

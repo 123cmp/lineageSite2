@@ -61,7 +61,7 @@ if(isset($_GET['games'])) {
 
             if ($game_name != $row['game_name']) {
                 $game_data[] = array(
-                    'img' => "",
+                    'img' => $row['img'],
                     'name' => $row['game_name'],
                     'alias' => $row['alias'],
                     'menu' => array()
@@ -128,6 +128,25 @@ if(isset($_GET['game']) && isset($_GET['currency'])) {
     }
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($game_rate);
+}
+
+// ---------- GAME - CURRENCY ----------
+
+if(isset($_GET['text']) && isset($_GET['game']) && isset($_GET['type'])) {
+    $texts = array();
+    $game_name = $_GET['game'];
+    $type = $_GET['type'];
+
+    $query = "SELECT * FROM texts WHERE game = '".$game_name."'  AND type = '".$type."'";
+    $res = mysqli_query($dbh, $query);
+    while($row = mysqli_fetch_array($res)) {
+
+        $texts[] = array(
+                'file' => $row['file']
+        );
+    }
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($texts);
 }
 
 // ---------- GAME - ITEMS ----------

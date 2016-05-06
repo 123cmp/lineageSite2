@@ -1,40 +1,33 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Май 06 2016 г., 13:21
--- Версия сервера: 5.5.46-0ubuntu0.14.04.2
--- Версия PHP: 5.6.20-1+deb.sury.org~trusty+1
+-- Host: localhost:8889
+-- Generation Time: May 06, 2016 at 02:36 PM
+-- Server version: 5.5.42
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- База данных: `lineage2`
+-- Database: `lineage2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `boost`
+-- Table structure for table `boost`
 --
 
-CREATE TABLE IF NOT EXISTS `boost` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `boost` (
+  `id` int(11) NOT NULL,
   `game` varchar(128) NOT NULL,
-  `desc_text` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `desc_text` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `boost`
+-- Dumping data for table `boost`
 --
 
 INSERT INTO `boost` (`id`, `game`, `desc_text`) VALUES
@@ -43,20 +36,19 @@ INSERT INTO `boost` (`id`, `game`, `desc_text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `characters`
+-- Table structure for table `characters`
 --
 
-CREATE TABLE IF NOT EXISTS `characters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `characters` (
+  `id` int(11) NOT NULL,
   `game` varchar(128) NOT NULL,
   `server` varchar(128) NOT NULL,
   `description` text NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `price` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `characters`
+-- Dumping data for table `characters`
 --
 
 INSERT INTO `characters` (`id`, `game`, `server`, `description`, `price`) VALUES
@@ -69,18 +61,17 @@ INSERT INTO `characters` (`id`, `game`, `server`, `description`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `currency`
+-- Table structure for table `currency`
 --
 
-CREATE TABLE IF NOT EXISTS `currency` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `currency` (
+  `id` int(11) NOT NULL,
   `game_name` varchar(128) NOT NULL,
-  `currency_name` varchar(48) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `currency_name` varchar(48) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `currency`
+-- Dumping data for table `currency`
 --
 
 INSERT INTO `currency` (`id`, `game_name`, `currency_name`) VALUES
@@ -95,20 +86,19 @@ INSERT INTO `currency` (`id`, `game_name`, `currency_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `games`
+-- Table structure for table `games`
 --
 
-CREATE TABLE IF NOT EXISTS `games` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `games` (
+  `id` int(11) NOT NULL,
   `game_name` varchar(48) NOT NULL,
   `alias` varchar(128) NOT NULL,
   `pages` set('gold','items','characters','boost') NOT NULL,
-  `img` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `img` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `games`
+-- Dumping data for table `games`
 --
 
 INSERT INTO `games` (`id`, `game_name`, `alias`, `pages`, `img`) VALUES
@@ -124,20 +114,19 @@ INSERT INTO `games` (`id`, `game_name`, `alias`, `pages`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `items`
+-- Table structure for table `items`
 --
 
-CREATE TABLE IF NOT EXISTS `items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL,
   `game` varchar(64) NOT NULL,
   `server` varchar(128) DEFAULT NULL,
   `name` varchar(128) NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+  `price` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `items`
+-- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`id`, `game`, `server`, `name`, `price`) VALUES
@@ -148,11 +137,11 @@ INSERT INTO `items` (`id`, `game`, `server`, `name`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `orders`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `game` varchar(128) NOT NULL,
   `server` varchar(128) NOT NULL,
   `money` float NOT NULL,
@@ -162,61 +151,198 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `contact` varchar(128) NOT NULL,
   `comment` text NOT NULL,
   `status` enum('new','done') NOT NULL DEFAULT 'new',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `rates`
+-- Table structure for table `rates`
 --
 
-CREATE TABLE IF NOT EXISTS `rates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rates` (
+  `id` int(11) NOT NULL,
   `game` varchar(128) NOT NULL,
   `server` varchar(128) NOT NULL,
   `count` bigint(11) NOT NULL,
   `price` float NOT NULL,
-  `currency_name` varchar(48) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+  `currency_name` varchar(48) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `rates`
+-- Dumping data for table `rates`
 --
 
 INSERT INTO `rates` (`id`, `game`, `server`, `count`, `price`, `currency_name`) VALUES
 (13, 'lineage_ii_free', 'satan x666', 1000, 0.015, 'col'),
-(15, 'lineage_ii_free', 'averia.ws x500', 100000000000, 0.0000000002, 'adena'),
-(16, 'lineage_ii_free', 'averia.ws x500', 80000000000, 0.000000000625, 'adena');
+(15, 'lineage_ii_free', 'averia.ws x500', 100000000000, 0.0000000002, 'adena');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `sales`
+-- Table structure for table `sales`
 --
 
-CREATE TABLE IF NOT EXISTS `sales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL,
   `rate_id` int(11) NOT NULL,
   `count` bigint(20) NOT NULL,
-  `value` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  `value` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `sales`
+-- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id`, `rate_id`, `count`, `value`) VALUES
-(11, 1, 100000000, 12),
+(11, 15, 100000000, 12),
 (13, 1, 100000000000, 15),
 (14, 1, 10000000000000, 20),
 (15, 2, 1000000000, 10),
 (16, 2, 10000000000, 12),
-(17, 3, 10000, 5);
+(17, 15, 10000, 5);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `texts`
+--
+
+CREATE TABLE `texts` (
+  `id` int(11) NOT NULL,
+  `game` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `texts`
+--
+
+INSERT INTO `texts` (`id`, `game`, `type`, `file`) VALUES
+(1, 'archeage', 'gold', 'aa_gold.html'),
+(2, 'blade_and_soul', 'gold', 'bas_gold.html'),
+(3, 'blade_and_soul', 'accounts', 'bas_accounts.html'),
+(4, 'cs_go', 'items', 'cs_items.html'),
+(5, 'dota2', 'items', 'd2_items.html'),
+(6, 'tera', 'gold', 'tera_gold.html'),
+(7, 'lineage_ii_free', 'accounts', 'l2free_acounts.html'),
+(8, 'lineage_ii_free', 'adena', 'l2free_adena.html'),
+(9, 'lineage_ii_free', 'col', 'l2free_col.html'),
+(11, 'lineage_ii_free', 'items', 'l2free_items.html'),
+(12, 'lineage_ii_ruoff', 'items', 'l2free_items.html'),
+(13, 'lineage_ii_ruoff', 'col', 'l2free_col.html'),
+(14, 'lineage_ii_ruoff', 'adena', 'l2free_adena.html'),
+(15, 'lineage_ii_ruoff', 'accounts', 'l2free_acounts.html'),
+(16, 'lineage_ii_classic', 'accounts', 'l2free_acounts.html'),
+(17, 'lineage_ii_classic', 'adena', 'l2free_adena.html'),
+(18, 'lineage_ii_classic', 'col', 'l2free_col.html'),
+(19, 'lineage_ii_classic', 'items', 'l2free_items.html');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `boost`
+--
+ALTER TABLE `boost`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `characters`
+--
+ALTER TABLE `characters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `currency`
+--
+ALTER TABLE `currency`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `games`
+--
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rates`
+--
+ALTER TABLE `rates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `texts`
+--
+ALTER TABLE `texts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `boost`
+--
+ALTER TABLE `boost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `characters`
+--
+ALTER TABLE `characters`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `currency`
+--
+ALTER TABLE `currency`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `games`
+--
+ALTER TABLE `games`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `rates`
+--
+ALTER TABLE `rates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `texts`
+--
+ALTER TABLE `texts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
