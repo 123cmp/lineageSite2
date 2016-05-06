@@ -109,6 +109,16 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
         return dfd.promise;
     }
 
+    function getBoost(game) {
+        var dfd = new $q.defer();
+
+        $http.get('/api/api.php?boost=' + game).then(function (result) {
+            dfd.resolve(result.data);
+        });
+
+        return dfd.promise;
+    }
+
     function getGameServers(game, currency) {
         var dfd = new $q.defer();
         $http.get('/api/api.php?game=' + game + '&currency=' + currency).then(function (result) {
@@ -121,8 +131,8 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
 
     function sendOrder(game, currency, server, nickname, contact, pay, buy, comment) {
         var dfd = new $q.defer();
-        $http.post('/api/api.php', {
-            orders: true,
+        console.log(comment);
+        $http.post('/api/api.php?orders=true', {
             game_name: game,
             game_server: server,
             currency: currency,
@@ -143,6 +153,7 @@ angular.module('lt2').factory('ServerApi', ['$q', '$timeout', '$http', function 
         getItems: getItems,
         getAccounts: getAccounts,
         getGameServers: getGameServers,
-        sendOrder: sendOrder
+        sendOrder: sendOrder,
+        getBoost: getBoost
     }
 }]);

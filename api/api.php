@@ -187,22 +187,24 @@ if(isset($_GET['boost'])) {
 
 // ---------- POST - ORDERS ----------
 
-if(isset($_POST['orders'])) {
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-    if($_POST['orders'] == "true") {
+if(endsWith($actual_link, "orders=true")) {
+    $body = json_decode(file_get_contents('php://input'));
+    error_log($body->game_name);
 
         session_start();
         if (!isset($_SESSION['order_temp_table'])) {
             $_SESSION['order_temp_table'] = array();
         }
 
-        $order_game_name = $_POST['game_name'];
-        $order_game_server = $_POST['game_server'];
-        $order_currency = $_POST['currency'];
-        $order_count = $_POST['count'];
-        $order_game_nick = $_POST['game_nick'];
-        $order_contact = $_POST['contact'];
-        $order_comment = $_POST['comment'];
+        $order_game_name = $body->game_name;
+        $order_game_server = $body->game_server;
+        $order_currency = $body->currency;
+        $order_count = $body->count;
+        $order_game_nick = $body->game_nick;
+        $order_contact = $body->contact;
+        $order_comment = $body->comment;
         $order_date = time();
 
         $order_current_order = array(
@@ -257,7 +259,6 @@ if(isset($_POST['orders'])) {
             echo "first pushing order, ";
             pushDataToDB($dbh, $order_current_order, $order_game_name, $order_game_server, $order_currency, $order_count, $order_game_nick, $order_contact, $order_comment);
         }
-    }
 }
 
 function calculateMoney($dbh, $order_game_name, $order_game_server, $order_currency, $order_count) {
@@ -314,4 +315,10 @@ function pushDataToDB($dbh, $order_current_order, $order_game_name, $order_game_
 }
 
 
+function endsWith($haystack, $needle) {
+    // search forward starting from end minus needle length characters
+    return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+}
 ?>
+
+

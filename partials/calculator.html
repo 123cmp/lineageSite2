@@ -4,25 +4,19 @@
     <div class="calculator">
 
         <h1>Калькулятор валюты</h1>
+
         <div class="calculator-row">
             <div class="calculator-column">
                 <div class="group" ng-class="{'invalid' : invalid.server}" ng-show="info.servers.length">
                     <div class="select-wrapper" ng-class="{'active': isServerChoose}">
                         <select required ng-model="model.server">
                             <option value="" disabled selected>Сервер</option>
-                            <option ng-repeat="server in info.servers" ng-bind="server.name" value="{{server.name}}"></option>
+                            <option ng-repeat="server in info.servers" ng-bind="server.name"
+                                    value="{{server.name}}"></option>
                         </select>
                     </div>
                 </div>
-
-                <div class="group" ng-class="{'invalid' : invalid.realM}">
-                    <input type="number" ng-change="onChangeRealMoney()" ng-model="model.realM" required step="any">
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Я плачу</label>
-                </div>
             </div>
-
             <div class="calculator-column">
                 <div class="group" ng-class="{'invalid' : invalid.nickname}">
                     <input type="text" ng-model="model.nickname" required>
@@ -30,7 +24,19 @@
                     <span class="bar"></span>
                     <label>Ник персонажа</label>
                 </div>
+            </div>
+        </div>
+        <div class="calculator-row">
+            <div class="calculator-column">
+                <div class="group" ng-class="{'invalid' : invalid.realM}">
+                    <input type="number" ng-change="onChangeRealMoney()" ng-model="model.realM" required step="any">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Я плачу</label>
+                </div>
 
+            </div>
+            <div class="calculator-column">
                 <div class="group" ng-class="{'invalid' : invalid.gameM}">
                     <input type="number" ng-change="onChangeGameMoney()" ng-model="model.gameM" required step="any">
                     <span class="highlight"></span>
@@ -38,6 +44,12 @@
                     <label>Я покупаю</label>
                 </div>
             </div>
+        </div>
+
+        <div class="calculator-row sale-text" ng-show="model.sale">
+            Вы получаете скидку <span class="bold" ng-bind="model.sale"></span>%.
+            С учетом скидки цена за <span class="bold" ng-bind="model.gameM"></span> <span ng-bind="model.currency"></span>
+            составит <span class="bold" ng-bind="model.payWithSale"></span> руб.
         </div>
 
         <div class="calculator-row">
@@ -54,8 +66,10 @@
         <div class="calculator-row">
             <div class="calculator-column full">
                 <div class="group" ng-class="{'invalid' : invalid.comment}">
-                    <textarea id="comment"  ng-model="model.comment" required max-length="{{info.maxCommentLength}}"></textarea>
+                    <textarea id="comment" ng-model="model.comment" required
+                              max-length="{{info.maxCommentLength}}"></textarea>
                     <label for="comment">Комментарий</label>
+
                     <div class="char-counter">
                         {{model.comment.length ? model.comment.length : "0"}}/{{info.maxCommentLength}}
                     </div>
@@ -66,9 +80,8 @@
         </div>
 
         <div class="calculator-row">
-           <button class="calculator-button" ng-click="send()">Отправить</button>
+            <button class="calculator-button" ng-click="send()">Отправить</button>
         </div>
-
 
 
     </div>

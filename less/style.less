@@ -388,6 +388,13 @@ section.body {
       text-indent: 1.5em;
       text-align: justify;
       line-height: 1.5em;
+       max-width: 100%;
+
+      span {
+        word-wrap: break-word;
+        display: block;
+        max-width: 55vw;
+      }
     }
 
     li {
@@ -871,4 +878,22 @@ i.contacts-icon {
     background: url("/img/email.png");
     background-size: contain;
   }
+}
+
+
+footer {
+  margin: 40px 0;
+  width: 100%;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: @color1;
+}
+
+.sale-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: @box-shadow;
 }

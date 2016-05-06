@@ -1,6 +1,12 @@
 .group {
   position: relative;
-  margin-bottom: 45px;
+  margin-bottom: 10px;
+}
+.calculator-row {
+  margin-bottom: 35px;
+}
+.calculator-row .bold {
+  font-weight: 600;
 }
 input {
   font-size: 18px;
@@ -478,6 +484,12 @@ section.body .static-block p {
   text-indent: 1.5em;
   text-align: justify;
   line-height: 1.5em;
+  max-width: 100%;
+}
+section.body .static-block p span {
+  word-wrap: break-word;
+  display: block;
+  max-width: 55vw;
 }
 section.body .static-block li {
   margin-top: 15px;
@@ -864,4 +876,19 @@ i.contacts-icon.tel-icon {
 i.contacts-icon.email-icon {
   background: url("/img/email.png");
   background-size: contain;
+}
+footer {
+  margin: 40px 0;
+  width: 100%;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: #ede7f6;
+}
+.sale-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: rgba(42, 48, 65, 0.7);
 }

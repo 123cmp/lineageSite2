@@ -46,15 +46,19 @@ angular.module('lt2',
                 templateUrl: "partials/faq.html",
                 controller: 'FAQController'
             })
-
+            .state('boost', {
+                url: "/boost",
+                templateUrl: "partials/boost.html",
+                controller: 'BoostController',
+                params: {
+                    object: null
+                }
+            })
             .state('static', {
                 url: "/static",
                 templateUrl: "partials/static.html"
             })
-            .state('static.boost', {
-                url: "/boost",
-                templateUrl: "partials/static/boost.html"
-            })
+
             .state('static.suppliers', {
                 url: "/suppliers",
                 templateUrl: "partials/static/suppliers.html"

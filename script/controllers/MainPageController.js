@@ -21,7 +21,7 @@ angular.module('lt2').controller('MainPageController',
                 $state.go('accounts', {object: params});
             } break;
             case 'boost': {
-                $state.go('static.boost');
+                $state.go('boost', {object: params});
             } break;
             case 'gold': {
                 $state.go('calculator', {object: params});

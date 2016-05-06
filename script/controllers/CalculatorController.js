@@ -13,11 +13,14 @@ angular.module('lt2').controller('CalculatorController',
 
         $scope.model = {
             server: "",
+            sale: "",
+            payWithSale: "",
             comment:"",
             nickname: "",
             contact: "",
             realM: "",
-            gameM: ""
+            gameM: "",
+            currency: params.currency
         };
 
         $scope.invalid = {};
@@ -26,7 +29,7 @@ angular.module('lt2').controller('CalculatorController',
             maxCommentLength: 150,
             servers: []
         };
-        console.log(params);
+
         var promise = ServerApi.getGameServers(params.game, params.currency);
         promise.then(function(data) {
             $scope.info.servers = data.servers;
@@ -63,25 +66,58 @@ angular.module('lt2').controller('CalculatorController',
             return Object.keys($scope.invalid).length == 0;
         };
 
+        $scope.calculateSale = function() {
+            var sales = $scope.currentServer.sales;
+            if(!sales || !sales.length) return;
+
+            sales = sales.sort(function(f, s) {
+               if(parseFloat(f.from) > parseFloat(s.from)) return 1;
+               if(parseFloat(f.from) < parseFloat(s.from)) return -1;
+               else return 0;
+            });
+
+            var chosenSale = 0;
+
+            if($scope.model.gameM) {
+                sales.forEach(function(v) {
+                    if(parseFloat($scope.model.gameM) > parseFloat(v.from))
+                        chosenSale = parseFloat(v.value);
+                });
+            }
+
+            if(chosenSale) {
+                $scope.model.sale = chosenSale;
+                $scope.model.payWithSale = $scope.model.realM - $scope.model.realM * chosenSale / 100;
+            }
+
+            console.log($scope.model.payWithSale);
+
+        };
+
         $scope.onChangeRealMoney = function() {
             inputControl();
+
 
             if($scope.model.realM && $scope.currentServer)
                 $scope.model.gameM = Math.floor(($scope.model.realM / $scope.currentServer.rate) * 100) / 100;
 
             if(!$scope.model.realM)
                 $scope.model.gameM = "";
+
+            $scope.calculateSale();
         };
+
 
         $scope.onChangeGameMoney = function() {
             inputControl();
 
-            console.log();
             if($scope.model.gameM && $scope.currentServer)
                 $scope.model.realM = Math.floor(($scope.model.gameM * $scope.currentServer.rate) * 100) / 100;
 
             if(!$scope.model.gameM)
                 $scope.model.realM = "";
+
+            $scope.calculateSale();
         };
 
         $scope.send = function() {
@@ -92,6 +128,7 @@ angular.module('lt2').controller('CalculatorController',
                     params.currency,
                     $scope.model.server,
                     $scope.model.contact,
+                    $scope.model.nickname,
                     $scope.model.realM,
                     $scope.model.gameM,
                     $scope.model.comment
