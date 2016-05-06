@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 24 2016 г., 22:03
--- Версия сервера: 5.5.25
--- Версия PHP: 5.3.13
+-- Хост: localhost
+-- Время создания: Май 06 2016 г., 13:21
+-- Версия сервера: 5.5.46-0ubuntu0.14.04.2
+-- Версия PHP: 5.6.20-1+deb.sury.org~trusty+1
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `currency` (
   `game_name` varchar(128) NOT NULL,
   `currency_name` varchar(48) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `currency`
@@ -89,7 +89,8 @@ INSERT INTO `currency` (`id`, `game_name`, `currency_name`) VALUES
 (3, 'lineage_ii_classic', 'adena'),
 (4, 'lineage_ii_ruoff', 'adena'),
 (5, 'tera', 'gold'),
-(6, 'archeage', 'gold');
+(6, 'archeage', 'gold'),
+(7, 'blade_and_soul', 'gold');
 
 -- --------------------------------------------------------
 
@@ -102,21 +103,23 @@ CREATE TABLE IF NOT EXISTS `games` (
   `game_name` varchar(48) NOT NULL,
   `alias` varchar(128) NOT NULL,
   `pages` set('gold','items','characters','boost') NOT NULL,
+  `img` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `games`
 --
 
-INSERT INTO `games` (`id`, `game_name`, `alias`, `pages`) VALUES
-(1, 'Lineage II free', 'lineage_ii_free', 'gold,items,characters,boost'),
-(3, 'Lineage II Ruoff', 'lineage_ii_ruoff', 'gold,items,characters,boost'),
-(4, 'Lineage II Classic', 'lineage_ii_classic', 'gold,items,characters,boost'),
-(5, 'ArcheAge', 'archeage', 'gold'),
-(6, 'Tera', 'tera', 'gold'),
-(7, 'CS GO', 'cs_go', 'items'),
-(8, 'dota2', 'dota2', 'items');
+INSERT INTO `games` (`id`, `game_name`, `alias`, `pages`, `img`) VALUES
+(1, 'Lineage II free', 'lineage_ii_free', 'gold,items,characters,boost', '/img/games/lineage_ii_free.jpg'),
+(3, 'Lineage II Ruoff', 'lineage_ii_ruoff', 'gold,items,characters,boost', '/img/games/lineage_ii_ruoff.jpg'),
+(4, 'Lineage II Classic', 'lineage_ii_classic', 'gold,items,characters,boost', '/img/games/lineage_ii_classic.jpg'),
+(5, 'Blade and Soul', 'blade_and_soul', 'gold,characters', '/img/games/blade_and_soul.jpg'),
+(6, 'ArcheAge', 'archeage', 'gold', '/img/games/archeage.jpg'),
+(7, 'Tera', 'tera', 'gold', '/img/games/tera.jpg'),
+(8, 'CS GO', 'cs_go', 'items,boost', '/img/games/cs_go.jpg'),
+(9, 'dota2', 'dota2', 'items,boost', '/img/games/dota2.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `game` varchar(128) NOT NULL,
   `server` varchar(128) NOT NULL,
-  `money` float(13) NOT NULL,
+  `money` float NOT NULL,
   `number` int(11) NOT NULL,
   `currency` varchar(24) NOT NULL,
   `nickname` varchar(128) NOT NULL,
@@ -177,18 +180,16 @@ CREATE TABLE IF NOT EXISTS `rates` (
   `price` float NOT NULL,
   `currency_name` varchar(48) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `rates`
 --
 
 INSERT INTO `rates` (`id`, `game`, `server`, `count`, `price`, `currency_name`) VALUES
-(11, 'lineage_ii_free', 'класик х 800', 2147483647, 0.000000000000974649, 'adena'),
-(12, 'lineage_ii_free', 'ruoff xx500', 2147483647, 0.00000000097457, 'adena'),
 (13, 'lineage_ii_free', 'satan x666', 1000, 0.015, 'col'),
-(14, 'lineage_ii_free', 'daemon x666', 2147483647, 0.0000000014, 'adena'),
-(15, 'lineage_ii_free', 'averia.ws x500', 100000000000, 0.0000000002, 'adena');
+(15, 'lineage_ii_free', 'averia.ws x500', 100000000000, 0.0000000002, 'adena'),
+(16, 'lineage_ii_free', 'averia.ws x500', 80000000000, 0.000000000625, 'adena');
 
 -- --------------------------------------------------------
 
