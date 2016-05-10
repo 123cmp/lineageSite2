@@ -79,11 +79,17 @@ if(isset($_GET['games'])) {
             }
 
             $game_name = $row['game_name'];
+            usort($game_data[$counter]["menu"], build_sorter("name"));
             $counter++;
         }
         echo json_encode($game_data);
-
     }
+}
+//sort: order by key
+function build_sorter($key) {
+    return function ($a, $b) use ($key) {
+        return strnatcmp($a[$key], $b[$key]);
+    };
 }
 
 // ---------- GAME - CURRENCY ----------
