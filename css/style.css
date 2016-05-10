@@ -8,6 +8,15 @@
 .calculator-row .bold {
   font-weight: 600;
 }
+select {
+  height: 37px;
+}
+textarea,
+select {
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(42, 48, 65, 0.7);
+  background: transparent;
+}
 input {
   font-size: 18px;
   padding: 10px 10px 10px 5px;
@@ -15,13 +24,16 @@ input {
   width: 300px;
   border: none;
   border-bottom: 1px solid #757575;
+  background: transparent;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(42, 48, 65, 0.7);
 }
 input:focus {
   outline: none;
 }
 /* LABEL ======================================= */
 label {
-  color: #999;
+  color: rgba(42, 48, 65, 0.8);
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -100,7 +112,6 @@ select {
   width: 102%;
   padding: 0;
   font-size: 16px;
-  height: 30px;
   border: none;
 }
 /* Remove focus */
@@ -270,9 +281,14 @@ header .header-menu a.active:hover {
   text-shadow: none;
 }
 header img.logo {
-  max-width: 100px;
-  max-height: 100px;
-  margin: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  position: absolute;
+  transform: scale(-1, 1);
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-left: 550px;
 }
 @media (max-width: 600px) {
   header img.logo {
@@ -693,16 +709,18 @@ section.body .game-list .game:hover img {
   bottom: 70px;
 }
 section.body .calculator-wrapper .calculator {
-  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(42, 48, 65, 0.7);
   width: 94%;
-  margin: 35px 3%;
+  margin: 55px 3% 35px;
   text-align: center;
   display: block;
+  padding-top: 30px;
 }
 section.body .calculator-wrapper .calculator h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 36px;
-  color: rgba(42, 48, 65, 0.5);
+  color: rgba(42, 48, 65, 0.8);
   margin-bottom: 25px;
   font-weight: 100;
   width: 100%;
@@ -712,8 +730,8 @@ section.body .calculator-wrapper .calculator .calculator-button {
   width: 40%;
   border: none;
   padding: 15px;
-  background: white;
-  color: rgba(42, 48, 65, 0.5);
+  background: transparent;
+  color: rgba(42, 48, 65, 0.8);
   margin-bottom: 30px;
   outline: 1px solid rgba(42, 48, 65, 0.5);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -722,7 +740,7 @@ section.body .calculator-wrapper .calculator .calculator-button {
   cursor: pointer;
 }
 section.body .calculator-wrapper .calculator .calculator-button:hover {
-  background: rgba(42, 48, 65, 0.5);
+  background: rgba(42, 48, 65, 0.8);
   color: white;
 }
 section.body .calculator-wrapper .calculator .calculator-column {
@@ -735,7 +753,7 @@ section.body .calculator-wrapper .calculator .calculator-column.full {
   width: 86%;
 }
 section.body .calculator-wrapper .calculator .calculator-column .group {
-  color: rgba(42, 48, 65, 0.5);
+  color: rgba(42, 48, 65, 0.8);
   display: inline-block;
   vertical-align: top;
   width: 100%;
@@ -792,11 +810,7 @@ section.body .calculator-wrapper .calculator .calculator-column .group label {
   font-size: 14px;
 }
 section.body .calculator-wrapper .calculator .calculator-column .group .select-wrapper {
-  border-bottom: 1px solid rgba(42, 48, 65, 0.5);
   width: 105%;
-}
-section.body .calculator-wrapper .calculator .calculator-column .group .select-wrapper.active {
-  border-bottom: 3px solid rgba(42, 48, 65, 0.5);
 }
 section.body .calculator-wrapper .calculator .calculator-column .group select {
   color: inherit;

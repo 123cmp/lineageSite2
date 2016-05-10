@@ -3,8 +3,6 @@
 
     <div class="calculator">
 
-        <h1>Калькулятор валюты</h1>
-
         <div class="calculator-row">
             <div class="calculator-column">
                 <div class="group" ng-class="{'invalid' : invalid.server}" ng-show="info.servers.length">
@@ -26,13 +24,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="calculator-row sale-text" ng-show="model.server">
+            Цена за <span ng-bind="currentServer.sum | kfilter"></span> <span ng-bind="model.currency"></span> на сервере <span ng-bind="currentServer.name"></span>
+            составляет <span ng-bind="currentServer.rate * currentServer.sum"></span> руб. без учета скидок.
+        </div>
+
         <div class="calculator-row">
             <div class="calculator-column">
                 <div class="group" ng-class="{'invalid' : invalid.realM}">
                     <input type="number" ng-change="onChangeRealMoney()" ng-model="model.realM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Я плачу</label>
+                    <label>Заплачу</label>
                 </div>
 
             </div>
@@ -41,14 +45,14 @@
                     <input type="number" ng-change="onChangeGameMoney()" ng-model="model.gameM" required step="any">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Я покупаю</label>
+                    <label>Получу</label>
                 </div>
             </div>
         </div>
 
-        <div class="calculator-row sale-text" ng-show="model.sale">
+        <div class="calculator-row sale-text" ng-show="model.sale && model.gameM">
             Вы получаете скидку <span class="bold" ng-bind="model.sale"></span>%.
-            С учетом скидки цена за <span class="bold" ng-bind="model.gameM"></span> <span ng-bind="model.currency"></span>
+            С учетом скидки, цена за покупку <span class="bold" ng-bind="model.gameM | kfilter"></span> <span ng-bind="model.currency"></span>
             составит <span class="bold" ng-bind="model.payWithSale"></span> руб.
         </div>
 
@@ -80,23 +84,23 @@
         </div>
 
         <div class="calculator-row">
-            <button class="calculator-button" ng-click="send()">Отправить</button>
+            <button class="calculator-button" ng-click="send()">Купить</button>
         </div>
 
 
     </div>
-    <div class="sales" ng-show="currentServer.sales && currentServer.sales.length">
-        <h3>Скидки:</h3>
-        <ul class="item-list">
-            <li class="header">
-                <div class="item-half">От</div>
-                <div class="item-half">Скидка</div>
-            </li>
-            <li ng-repeat="sale in currentServer.sales track by $index">
-                <div class="item-half"><span ng-bind="sale.from"></span> <span ng-bind="model.currency"></span></div>
-                <div class="item-half"><span ng-bind="sale.value"></span>%</div>
-            </li>
-        </ul>
-    </div>
+    <!--<div class="sales" ng-show="currentServer.sales && currentServer.sales.length">-->
+        <!--<h3>Скидки:</h3>-->
+        <!--<ul class="item-list">-->
+            <!--<li class="header">-->
+                <!--<div class="item-half">От</div>-->
+                <!--<div class="item-half">Скидка</div>-->
+            <!--</li>-->
+            <!--<li ng-repeat="sale in currentServer.sales track by $index">-->
+                <!--<div class="item-half"><span ng-bind="sale.from"></span> <span ng-bind="model.currency"></span></div>-->
+                <!--<div class="item-half"><span ng-bind="sale.value"></span>%</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
 
 </div>

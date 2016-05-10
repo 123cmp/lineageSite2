@@ -91,6 +91,8 @@ angular.module('lt2').controller('CalculatorController',
             if(chosenSale) {
                 $scope.model.sale = chosenSale;
                 $scope.model.payWithSale = $scope.model.realM - $scope.model.realM * chosenSale / 100;
+                if($scope.model.payWithSale % 1 != 0)
+                    $scope.model.payWithSale = parseFloat($scope.model.payWithSale).toFixed(2);
             }
 
             console.log($scope.model.payWithSale);

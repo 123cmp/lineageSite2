@@ -11,6 +11,16 @@
   }
 }
 
+select {
+  height: 37px;
+}
+
+textarea, select {
+  border-radius: 5px;
+  box-shadow: 0 1px 5px @box-shadow;
+  background: transparent;
+}
+
 input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
@@ -18,12 +28,15 @@ input 				{
   width:300px;
   border:none;
   border-bottom:1px solid #757575;
+  background: transparent;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px @box-shadow;
 }
 input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
 label 				 {
-  color:#999;
+  color:@text-color;
   font-size:18px;
   font-weight:normal;
   position:absolute;
@@ -113,7 +126,7 @@ select {
   width: 102%;
   padding: 0;
   font-size: 16px;
-  height: 30px;
+  //height: 30px;
   //color: rgba(0,0,0, 0.26);
   border: none;
   //border-bottom: 1px solid rgba(0,0,0, 0.12);
