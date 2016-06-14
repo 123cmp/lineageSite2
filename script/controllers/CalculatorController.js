@@ -44,7 +44,7 @@ angular.module('lt2').controller('CalculatorController',
                 $scope.isServerChoose = true;
                 $scope.currentServer = findServer($scope.model.server);
 
-                console.log($scope.currentServer);
+                $scope.calculateSale();
                 $scope.onChangeRealMoney();
             }
         });
@@ -88,14 +88,16 @@ angular.module('lt2').controller('CalculatorController',
                 });
             }
 
-            if(chosenSale) {
+            if(chosenSale)
                 $scope.model.sale = chosenSale;
-                $scope.model.payWithSale = $scope.model.realM - $scope.model.realM * chosenSale / 100;
-                if($scope.model.payWithSale % 1 != 0)
-                    $scope.model.payWithSale = parseFloat($scope.model.payWithSale).toFixed(2);
-            }
+            else
+                $scope.model.sale = 0;
 
-            console.log($scope.model.payWithSale);
+            $scope.model.payWithSale = $scope.model.realM - $scope.model.realM * chosenSale / 100;
+            if($scope.model.payWithSale % 1 != 0)
+                $scope.model.payWithSale = parseFloat($scope.model.payWithSale).toFixed(2);
+
+            console.log($scope.model.sale);
 
         };
 
@@ -149,7 +151,7 @@ angular.module('lt2').controller('CalculatorController',
                             gameM: "",
                             currency: params.currency
                         };
-                        ngDialog.open({ template: '<h2>Ваша заявка принята</h2>', plain: true});
+                        ngDialog.open({ template: '<h2>Ваша заявка принята! Наш консультант с вами свяжется</h2>', plain: true});
                     });
             } else {
                 $scope.allValidation = true;

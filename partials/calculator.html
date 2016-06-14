@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="calculator-row sale-text" ng-show="model.sale && model.gameM">
+        <div class="calculator-row sale-text bold-sale" ng-show="model.sale && model.gameM">
             Вы получаете скидку <span class="bold" ng-bind="model.sale"></span>%.
             С учетом скидки, цена за покупку <span class="bold" ng-bind="model.gameM | kfilter"></span> <span ng-bind="model.currency"></span>
             составит <span class="bold" ng-bind="model.payWithSale"></span> руб.

@@ -959,3 +959,7 @@ footer {
   font-size: 14px;
   color: rgba(42, 48, 65, 0.7);
 }
+.sale-text.bold-sale {
+  font-size: 18px;
+  color: #f64f42;
+}
