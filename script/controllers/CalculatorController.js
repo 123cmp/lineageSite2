@@ -106,11 +106,10 @@ angular.module('lt2').controller('CalculatorController',
 
 
             if($scope.model.realM && $scope.currentServer)
-                $scope.model.gameM = Math.floor(($scope.model.realM / $scope.currentServer.rate) * 100) / 100;
+                $scope.model.gameM = Math.ceil(($scope.model.realM / $scope.currentServer.rate) * 100) / 100;
 
             if(!$scope.model.realM)
                 $scope.model.gameM = "";
-
             $scope.calculateSale();
         };
 

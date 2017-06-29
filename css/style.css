@@ -200,9 +200,12 @@ html {
 body {
   height: 100%;
   min-width: 900px;
-  background: url("/bg12.jpg") no-repeat;
+  background: url("/bg12.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
   display: table-cell;
-  background-size: cover;
   width: 100vw;
   padding-top: 195px;
 }

@@ -290,8 +290,7 @@ function calculateMoney($dbh, $order_game_name, $order_game_server, $order_curre
 
     $order_count_price = 0;
     $order_sale = 0;
-
-    $query = "SELECT * FROM rates WHERE game = '".$order_game_name."' AND server = '".$order_game_server."'  AND currency = '".$order_currency."'";
+    $query = "SELECT * FROM rates WHERE game = '".$order_game_name."' AND server = '".$order_game_server."'  AND currency_name = '".$order_currency."'";
     $res = mysqli_query($dbh, $query);
     while($row = mysqli_fetch_array($res)) {
 

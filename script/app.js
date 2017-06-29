@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 angular.module('lt2',
     [
         'ui.router',

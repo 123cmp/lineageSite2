@@ -16,16 +16,16 @@ angular.module('lt2').controller('IndexController',
             });
 
         $scope.createWidget = function() {
-            var widgets = document.getElementById('vk_groups');
-            widgets.innerHTML = "";
-            var block = document.getElementsByClassName('left-block')[0];
-            var width = block.offsetWidth;
-            var height = 300;
-            VK.Widgets.Group("vk_groups", {mode: 0, width: width, height: height, color1: 'EDE7F6', color2: '3B4D58', color3: '3B4D58'}, 120761016);
+        //    var widgets = document.getElementById('vk_groups');
+        //widgets.innerHTML = "";
+        //var block = document.getElementsByClassName('left-block')[0];
+       //var width = block.offsetWidth;
+       //var height = 300;
+       //     VK.Widgets.Group("vk_groups", {mode: 0, width: width, height: height, color1: 'EDE7F6', color2: '3B4D58', color3: '3B4D58'}, 120761016);
         };
 
         window.onresize = function() {
-            $scope.createWidget();
+          //  $scope.createWidget();
         };
 
         window.onresize();
